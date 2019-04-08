@@ -80,6 +80,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Maike/Documents/Studium/ADS/Development/Projekte/ADS/Praktika/Praktikum1/Aufgabe1/List.cpp">
+			<Option target="Aufgabe1"/>
+		</Unit>
+		<Unit filename="C:/Users/Maike/Documents/Studium/ADS/Development/Projekte/ADS/Praktika/Praktikum1/Aufgabe1/List.h">
+			<Option target="Aufgabe1"/>
+		</Unit>
+		<Unit filename="C:/Users/Maike/Documents/Studium/ADS/Development/Projekte/ADS/Praktika/Praktikum1/Aufgabe1/Node.cpp">
+			<Option target="Aufgabe1"/>
+		</Unit>
+		<Unit filename="C:/Users/Maike/Documents/Studium/ADS/Development/Projekte/ADS/Praktika/Praktikum1/Aufgabe1/Node.h">
+			<Option target="Aufgabe1"/>
+		</Unit>
 		<Unit filename="C:/Users/Maike/Documents/Studium/ADS/Development/Projekte/ADS/Praktika/Praktikum1/Aufgabe1/main.cpp">
 			<Option target="Aufgabe1"/>
 		</Unit>

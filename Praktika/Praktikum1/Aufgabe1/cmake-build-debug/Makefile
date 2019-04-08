@@ -122,6 +122,60 @@ Aufgabe1/fast:
 	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/build
 .PHONY : Aufgabe1/fast
 
+List.obj: List.cpp.obj
+
+.PHONY : List.obj
+
+# target to build an object file
+List.cpp.obj:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/List.cpp.obj
+.PHONY : List.cpp.obj
+
+List.i: List.cpp.i
+
+.PHONY : List.i
+
+# target to preprocess a source file
+List.cpp.i:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/List.cpp.i
+.PHONY : List.cpp.i
+
+List.s: List.cpp.s
+
+.PHONY : List.s
+
+# target to generate assembly for a file
+List.cpp.s:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/List.cpp.s
+.PHONY : List.cpp.s
+
+Node.obj: Node.cpp.obj
+
+.PHONY : Node.obj
+
+# target to build an object file
+Node.cpp.obj:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/Node.cpp.obj
+.PHONY : Node.cpp.obj
+
+Node.i: Node.cpp.i
+
+.PHONY : Node.i
+
+# target to preprocess a source file
+Node.cpp.i:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/Node.cpp.i
+.PHONY : Node.cpp.i
+
+Node.s: Node.cpp.s
+
+.PHONY : Node.s
+
+# target to generate assembly for a file
+Node.cpp.s:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/Node.cpp.s
+.PHONY : Node.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... Aufgabe1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... List.obj
+	@echo ... List.i
+	@echo ... List.s
+	@echo ... Node.obj
+	@echo ... Node.i
+	@echo ... Node.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
