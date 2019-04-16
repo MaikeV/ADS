@@ -149,6 +149,33 @@ List.cpp.s:
 	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/List.cpp.s
 .PHONY : List.cpp.s
 
+ListTest.obj: ListTest.cpp.obj
+
+.PHONY : ListTest.obj
+
+# target to build an object file
+ListTest.cpp.obj:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.obj
+.PHONY : ListTest.cpp.obj
+
+ListTest.i: ListTest.cpp.i
+
+.PHONY : ListTest.i
+
+# target to preprocess a source file
+ListTest.cpp.i:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.i
+.PHONY : ListTest.cpp.i
+
+ListTest.s: ListTest.cpp.s
+
+.PHONY : ListTest.s
+
+# target to generate assembly for a file
+ListTest.cpp.s:
+	$(MAKE) -f CMakeFiles\Aufgabe1.dir\build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.s
+.PHONY : ListTest.cpp.s
+
 Node.obj: Node.cpp.obj
 
 .PHONY : Node.obj
@@ -215,6 +242,9 @@ help:
 	@echo ... List.obj
 	@echo ... List.i
 	@echo ... List.s
+	@echo ... ListTest.obj
+	@echo ... ListTest.i
+	@echo ... ListTest.s
 	@echo ... Node.obj
 	@echo ... Node.i
 	@echo ... Node.s

@@ -8,8 +8,7 @@
 #include <string>
 #include <iostream>
 
-class List
-{
+class List {
     /*
     Die Klasse List dient zur Verwaltung von Knoten (Node). Mit Hilfe der Klasse List
     kann ein Stapel oder Warteschlange realisiert werden.
@@ -54,5 +53,3 @@ public:
 };
 
 #endif
-
-

@@ -4,8 +4,7 @@
 
 #ifndef _NODE_H
 #define _NODE_H
-class Node
-{
+class Node {
 public:
     int key;
     Node * next, * prev;

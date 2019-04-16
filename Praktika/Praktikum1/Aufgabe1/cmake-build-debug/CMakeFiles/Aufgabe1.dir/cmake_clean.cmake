@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Aufgabe1.dir/main.cpp.obj"
   "CMakeFiles/Aufgabe1.dir/Node.cpp.obj"
   "CMakeFiles/Aufgabe1.dir/List.cpp.obj"
+  "CMakeFiles/Aufgabe1.dir/ListTest.cpp.obj"
   "Aufgabe1.pdb"
   "Aufgabe1.exe"
   "Aufgabe1.exe.manifest"
