@@ -59,6 +59,21 @@ List::~List() {
 /*
 	hier alle Knoten löschen, die im Objekt List allokiert wurden
 */
+
+//    if(this->head_tail->next != this->head_tail) {
+//        Node *ptr = this->head_tail;
+//        Node *temp;
+//
+//        this->head_tail->prev->next = nullptr;
+//
+//        while(ptr->next != nullptr) {
+//            temp = ptr->next;
+//            delete ptr;
+//            ptr = temp;
+//        }
+//    }
+//
+//    this->head_tail = nullptr;
 }
 
 void List::insertFront(int key) {
@@ -100,12 +115,25 @@ void List::insertFront(List &_List) {
 	Diese Knoten (koplette Kette) werden an den Anfang der Liste (this) übertragen ohne sie zu kopieren!
 */
 
-    if(!_List.head_tail->next || !this->head_tail->next ) {
+    if(!_List.head_tail->next) {
         return;
     }
 
-    _List.head_tail->prev->next = this->head_tail->next->prev;
-    this->head_tail->prev = _List.head_tail->next;
+    if(!this->head_tail->next) {
+        this->head_tail->next = _List.head_tail->next;
+        _List.head_tail->next->prev = this->head_tail;
+
+        this->head_tail->prev = _List.head_tail->prev;
+        _List.head_tail->prev->next = this->head_tail;
+
+        return;
+    }
+
+    this->head_tail->next->prev = _List.head_tail->prev;    // _List->last <-- this->first
+    _List.head_tail->prev->next = this->head_tail->next;    // _List->last --> this->first
+
+    _List.head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
+    this->head_tail->next = _List.head_tail->next;          // this->head_tail --> List->first
 }
 
 void List::insertFront(List *_List) {
@@ -119,6 +147,26 @@ void List::insertFront(List *_List) {
 	Es wird ein Objekt übergeben in dem Knoten vorhanden sein können.
 	Diese Knoten (koplette Kette) werden an den Anfang der Liste (this) übertragen ohne sie zu kopieren!
 */
+
+    if(!_List->head_tail->next) {
+        return;
+    }
+
+    if(!this->head_tail->next) {
+        this->head_tail->next = _List->head_tail->next;
+        _List->head_tail->next->prev = this->head_tail;
+
+        this->head_tail->prev = _List->head_tail->prev;
+        _List->head_tail->prev->next = this->head_tail;
+
+        return;
+    }
+
+    this->head_tail->next->prev = _List->head_tail->prev;    // _List->last <-- this->first
+    _List->head_tail->prev->next = this->head_tail->next;    // _List->last --> this->first
+
+    _List->head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
+    this->head_tail->next = _List->head_tail->next;          // this->head_tail --> List->first
 }
 
 void List::insertBack(int key) {
@@ -169,7 +217,10 @@ void List::insertBack(List &_List) {
 
     if(!this->head_tail->next) {
         this->head_tail->next = _List.head_tail->next;
-        _List.head_tail->prev = this->head_tail->prev;
+        _List.head_tail->next->prev = this->head_tail;
+
+        this->head_tail->prev = _List.head_tail->prev;
+        _List.head_tail->prev->next = this->head_tail;
 
         return;
     }
@@ -192,6 +243,24 @@ void List::insertBack(List *_List) {
 	Es wird ein Objekt übergeben in dem Knoten vorhanden sein können.
 	Diese Knoten (koplette Kette) werden an das Ende der Liste (this) angehangen ohne sie zu kopieren!
 */
+    if(!_List->head_tail->next) {
+        return;
+    }
+
+    if(!this->head_tail->next) {
+        this->head_tail->next = _List->head_tail->next;
+        _List->head_tail->next->prev = this->head_tail;
+
+        this->head_tail->prev = _List->head_tail->prev;
+        _List->head_tail->prev->next = this->head_tail;
+
+        return;
+    }
+
+    this->head_tail->prev->next = _List->head_tail->next;
+    _List->head_tail->next->prev = this->head_tail->prev;
+    _List->head_tail->prev->next = this->head_tail;
+    this->head_tail->prev = _List->head_tail->prev;
 }
 
 bool List::getFront(int &key) {
@@ -203,7 +272,7 @@ bool List::getFront(int &key) {
 	Die Methode del(key) darf nicht zum löschen benutzt werden.
 */
 
-    std::cout << "Hier auch!";
+    //std::cout << "Hier auch!";
     if (!this->head_tail->next) {
         return false;
     }
@@ -322,37 +391,52 @@ bool List::swap(int key1, int key2) {
         return false;
     }
 
+    if (key1 == key2) {
+        return true;
+    }
+
     Node *ptr = this->head_tail->next;
-    Node *node1 = this->head_tail;
-    Node *node2 = this->head_tail;
+    Node *node1 = nullptr;
+    Node *node2 = nullptr;
 
     while(ptr != this->head_tail) {
-        if(ptr->key == key1 && node2 == this->head_tail) {
+        if(ptr->key == key1 && node1 == nullptr) {
             node1 = ptr;
         }
 
-        if(ptr->key == key2 && node2 == this->head_tail) {
+        if(ptr->key == key2 && node2 == nullptr) {
             node2 = ptr;
         }
 
-        if(node1 != this->head_tail && node2 != this->head_tail) {
+        if(node1 != nullptr && node2 != nullptr) {
             break;
         }
 
         ptr = ptr->next;
     }
 
-    if(node1 == this->head_tail || node2 == this->head_tail) {
+    if(node1 == nullptr|| node2 == nullptr) {
         return true;
     }
 
-    std::cout << node1->key << "-" << node2->key << std::endl;
+    //std::cout << node1->key << "-" << node2->key << std::endl;
 
-    Node *temp = node1;
-    Node *temp2 = node2;
+    Node *temp = head_tail->next;
 
-    temp->prev->next = node2;
-    
+    while(temp->prev->key != node1->key) {
+        temp = temp->next;
+    }
+
+    node1->next = node2->next;
+    node2->next->prev = node1;
+    node2->next = temp;
+    temp->prev = node2;
+    node2->prev->next = node1;
+    node1->prev->next = node2;
+    temp = node2->prev;
+    node2->prev = node1->prev;
+    node1->prev = temp;
+
 
     return true;
 }
@@ -377,7 +461,7 @@ int List::size() {
     return counter;
 }
 
-bool List::test(void) {
+bool List::test() {
     // Testmethode: die Methode durchläuft die Liste vom Anfang bis zum Ende und zurück
     // Es werden dabei die Anzahl der Knoten gezählt.
     // Stimmt die Anzahl der Knoten überein liefert die Methode true

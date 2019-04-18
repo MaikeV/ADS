@@ -4,6 +4,7 @@
 
 #include "Node.h"
 Node::Node() {
+    key = 0;
     next = 0;
     prev = 0;
 }

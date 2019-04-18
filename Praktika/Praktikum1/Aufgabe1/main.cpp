@@ -53,8 +53,8 @@ int main() {
     MyList3.format("MyList3\n<<", ", ", ">>\n\n");
     std::cout << MyList3 << std::endl;
 
-    //MyList3.swap(8, 103);
-    MyList3.swap(9, 2);
+    MyList3.swap(8, 103);
+
     std::cout << MyList3;
 
     if (MyList3.test()) {
