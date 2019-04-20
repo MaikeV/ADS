@@ -35,8 +35,8 @@ public:
     bool del(int key);						// löschen eines Knotens [key]
     bool search(int key);					// Suchen eines Knoten
     bool swap(int key1, int key2);			// Knoten in der Liste vertauschen
-    int size(void);							// Größe der Lise (Anzahl der Knoten)
-    bool test(void);						// Überprüfen der Zeigerstruktur der Liste
+    int size();							// Größe der Lise (Anzahl der Knoten)
+    bool test();						// Überprüfen der Zeigerstruktur der Liste
     void format(const std::string & start, const std::string & zwischen, const std::string & ende);
     // Mit der format-Methode kann die Ausgabe gesteuert werden: operator <<
     // start: stirng vor der Ausgabe der Liste

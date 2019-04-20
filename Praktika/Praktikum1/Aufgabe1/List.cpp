@@ -272,7 +272,6 @@ bool List::getFront(int &key) {
 	Die Methode del(key) darf nicht zum löschen benutzt werden.
 */
 
-    //std::cout << "Hier auch!";
     if (!this->head_tail->next) {
         return false;
     }
@@ -469,6 +468,7 @@ bool List::test() {
     int i_next = 0, i_prev = 0;
     while (tmp != head_tail) {
         tmp = tmp->next;
+        std::cout << list_size;
         if (i_next > list_size) return false;
         i_next++;
     }
