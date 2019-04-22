@@ -84,16 +84,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/List.cpp">
-			<Option target="Aufgabe1"/>
-		</Unit>
 		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/List.h">
-			<Option target="Aufgabe1"/>
-		</Unit>
-		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/ListTest.cpp">
-			<Option target="Aufgabe1"/>
-		</Unit>
-		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/Node.cpp">
 			<Option target="Aufgabe1"/>
 		</Unit>
 		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/Node.h">

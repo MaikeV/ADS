@@ -70,62 +70,17 @@ CMakeFiles/Aufgabe1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Aufgabe1.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/main.cpp -o CMakeFiles/Aufgabe1.dir/main.cpp.s
 
-CMakeFiles/Aufgabe1.dir/Node.cpp.o: CMakeFiles/Aufgabe1.dir/flags.make
-CMakeFiles/Aufgabe1.dir/Node.cpp.o: ../Node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Aufgabe1.dir/Node.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Aufgabe1.dir/Node.cpp.o -c /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/Node.cpp
-
-CMakeFiles/Aufgabe1.dir/Node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Aufgabe1.dir/Node.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/Node.cpp > CMakeFiles/Aufgabe1.dir/Node.cpp.i
-
-CMakeFiles/Aufgabe1.dir/Node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Aufgabe1.dir/Node.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/Node.cpp -o CMakeFiles/Aufgabe1.dir/Node.cpp.s
-
-CMakeFiles/Aufgabe1.dir/List.cpp.o: CMakeFiles/Aufgabe1.dir/flags.make
-CMakeFiles/Aufgabe1.dir/List.cpp.o: ../List.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Aufgabe1.dir/List.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Aufgabe1.dir/List.cpp.o -c /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/List.cpp
-
-CMakeFiles/Aufgabe1.dir/List.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Aufgabe1.dir/List.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/List.cpp > CMakeFiles/Aufgabe1.dir/List.cpp.i
-
-CMakeFiles/Aufgabe1.dir/List.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Aufgabe1.dir/List.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/List.cpp -o CMakeFiles/Aufgabe1.dir/List.cpp.s
-
-CMakeFiles/Aufgabe1.dir/ListTest.cpp.o: CMakeFiles/Aufgabe1.dir/flags.make
-CMakeFiles/Aufgabe1.dir/ListTest.cpp.o: ../ListTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Aufgabe1.dir/ListTest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Aufgabe1.dir/ListTest.cpp.o -c /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/ListTest.cpp
-
-CMakeFiles/Aufgabe1.dir/ListTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Aufgabe1.dir/ListTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/ListTest.cpp > CMakeFiles/Aufgabe1.dir/ListTest.cpp.i
-
-CMakeFiles/Aufgabe1.dir/ListTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Aufgabe1.dir/ListTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/ListTest.cpp -o CMakeFiles/Aufgabe1.dir/ListTest.cpp.s
-
 # Object files for target Aufgabe1
 Aufgabe1_OBJECTS = \
-"CMakeFiles/Aufgabe1.dir/main.cpp.o" \
-"CMakeFiles/Aufgabe1.dir/Node.cpp.o" \
-"CMakeFiles/Aufgabe1.dir/List.cpp.o" \
-"CMakeFiles/Aufgabe1.dir/ListTest.cpp.o"
+"CMakeFiles/Aufgabe1.dir/main.cpp.o"
 
 # External object files for target Aufgabe1
 Aufgabe1_EXTERNAL_OBJECTS =
 
 Aufgabe1: CMakeFiles/Aufgabe1.dir/main.cpp.o
-Aufgabe1: CMakeFiles/Aufgabe1.dir/Node.cpp.o
-Aufgabe1: CMakeFiles/Aufgabe1.dir/List.cpp.o
-Aufgabe1: CMakeFiles/Aufgabe1.dir/ListTest.cpp.o
 Aufgabe1: CMakeFiles/Aufgabe1.dir/build.make
 Aufgabe1: CMakeFiles/Aufgabe1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Aufgabe1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Aufgabe1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Aufgabe1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

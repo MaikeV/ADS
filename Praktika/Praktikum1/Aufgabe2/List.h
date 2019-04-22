@@ -2,36 +2,88 @@
 // Created by Maike on 08.04.2019.
 //
 
-#ifndef _LIST_H
-#define _LIST_H
 #include "Node.h"
 #include <string>
 #include <iostream>
 
-#include "List.h"
+template <class T> class List {
+    /*
+    Die Klasse List dient zur Verwaltung von Knoten (Node). Mit Hilfe der Klasse List
+    kann ein Stapel oder Warteschlange realisiert werden.
+    */
 
-List::List() {
+							// normalerweise false; ist true, wenn es sich um eine temoräre Liste handelt
+                                            // die innerhalb der überladenen Operatoren angelegt wird
+public:
+    List();
+    struct form { std::string start = "<< "; std::string zwischen = ", "; std::string ende = " >>\n"; } list_form;
+    Node<T> * head_tail;
+    // Zeiger auf Kopf- und End-Element -> next der 1. Knoten; -> prev der letzte Knoten
+    int list_size;							// Länge der Kette
+    bool temp;
+    List(const List<T> & _List);				// Kopie Konstruktor
+    List(const List<T> * _List);				// Kopie Konstruktor
+    ~List();
+    void insertFront(T key);				// Einfügen eines Knotens am Anfang
+    void insertFront(List<T> & _List);			// Einfügen einer vorhandenen Liste am Anfang
+    void insertFront(List<T> * _List);			// Einfügen einer vorhandenen Liste am Anfang
+    void insertBack(T key);				    // Einfügen eines Knotesn am Ende
+    void insertBack(List<T> & _List);			// Einfügen einer vorhandenen Liste am Ende
+    void insertBack(List<T> * _List);			// Einfügen einer vorhandenen Liste am Ende
+    bool getFront(T & key);				    // Entnehmen eines Knoten am Anfang
+    bool getBack(T & key);				    // Entnehmen eines Knoten am Ende
+    bool del(T key);						// löschen eines Knotens [key]
+    bool search(T key);				    	// Suchen eines Knoten
+    bool swap(T key1, T key2);			    // Knoten in der Liste vertauschen
+    int size();							    // Größe der Lise (Anzahl der Knoten)
+    bool test();						    // Überprüfen der Zeigerstruktur der Liste
+    void format(const std::string & start, const std::string & zwischen, const std::string & ende);
+    // Mit der format-Methode kann die Ausgabe gesteuert werden: operator <<
+    // start: stirng vor der Ausgabe der Liste
+    // zwischen: string zwischen Listenknoten
+    // ende: string am Ende der Liste
+    List<T> & operator = (const List<T> & _List);						// Zuweisungsoperator definieren
+    List<T> & operator = (const List<T> * _List);						// Zuweisungsoperator definieren
+    List<T> & operator + (const List<T> & List_Append);				// Listen zusammenführen zu einer Liste
+    List<T> & operator + (const List<T>* List_Append);				// Listen zusammenführen zu einer Liste
+
+    //template <typename T>
+    template<class Tf> friend std::ostream & operator << (std::ostream & stream, List<T> const & Liste);		// Ausgabeoperator überladen
+
+    //template <typename T>
+    template<class Tf> friend std::ostream & operator << (std::ostream & stream, List<T> const * Liste);		// Ausgabeoperator überladen
+
+    //template <typename T>
+    template<class Tf> friend Node<T>* get_anker(List<T>& l);
+
+    //template <typename T>
+    template<class Tf> friend int get_AnzahlNodes(List<T>& l);
+};
+
+template <typename T>
+List<T>::List() {
     // Konstruktor für eine leere Liste
-    head_tail = new Node;
+    head_tail = new Node<T>;
     list_size = 0;
     temp = false;
     head_tail->next = head_tail;
     head_tail->prev = head_tail;
 }
 
-List::List(const List &_List) {
+template <typename T>
+List<T>::List(const List<T> &_List) {
     // Konstruktor mit Übergabe einer Liste, die dann kopiert wird.
     // in dem Objekt _List sind die Knotenwerte enthalten, die Kopiert werden sollen.
     list_form = _List.list_form;
-    head_tail = new Node;
+    head_tail = new Node<T>;
     list_size = 0;
     temp = _List.temp;
     head_tail->next = head_tail;
     head_tail->prev = head_tail;
-    Node *tmp_node;
+    Node<T> *tmp_node;
     tmp_node = _List.head_tail->next;
     while (tmp_node != _List.head_tail) {
-        head_tail->prev = new Node(tmp_node->key, head_tail->prev->next, head_tail->prev);
+        head_tail->prev = new Node<T>(tmp_node->key, head_tail->prev->next, head_tail->prev);
         head_tail->prev->prev->next = head_tail->prev;
         list_size++;
         tmp_node = tmp_node->next;
@@ -39,19 +91,20 @@ List::List(const List &_List) {
     if (_List.temp) delete &_List;        // ist die Übergebene Liste eine temporäre Liste? -> aus Operator +
 }
 
-List::List(const List *_List) {
+template <typename T>
+List<T>::List(const List<T> *_List) {
     // Konstruktor mit Übergabe einer Liste, die dann kopiert wird.
     // in dem Objekt _List sind die Knotenwerte enthalten, die Kopiert werden sollen.
     list_form = _List->list_form;
-    head_tail = new Node;
+    head_tail = new Node<T>;
     list_size = 0;
     temp = _List->temp;
     head_tail->next = head_tail;
     head_tail->prev = head_tail;
-    Node *tmp_node;
+    Node<T> *tmp_node;
     tmp_node = _List->head_tail->next;
     while (tmp_node != _List->head_tail) {
-        head_tail->prev = new Node(tmp_node->key, head_tail->prev->next, head_tail->prev);
+        head_tail->prev = new Node<T>(tmp_node->key, head_tail->prev->next, head_tail->prev);
         head_tail->prev->prev->next = head_tail->prev;
         list_size++;
         tmp_node = tmp_node->next;
@@ -59,62 +112,64 @@ List::List(const List *_List) {
     if (_List->temp) delete _List;        // ist die Übergebene Liste eine temporäre Liste? -> aus Operator +
 }
 
-List::~List() {
+template <typename T>
+List<T>::~List() {
     // Dekonstruktor
     // Alle Knoten der Liste müssen gelöscht werden, wenn die Liste gelöscht wird.
 /*
+
 	hier alle Knoten löschen, die im Objekt List allokiert wurden
 */
-//    this->head_tail->prev->next = nullptr;
-//
-//    if(this->head_tail->next != nullptr) {
-//
-//        Node *ptr = this->head_tail->next;
-//        Node *tmp;
-//
-//        while(ptr != nullptr) {
-//            tmp = ptr->next;
-//            delete ptr;
-//            ptr = tmp;
-//        }
-//    }
-//
-//    this->head_tail = nullptr;
+
+    if(this->size() == 0){
+        delete this->head_tail;
+        return;
+    }
+    this->head_tail->prev->next = 0;
+
+    while (this->head_tail!= nullptr) {
+        Node<T> *ptr = this->head_tail->next;
+        delete this->head_tail;
+        this->head_tail = ptr;
+    }
 }
 
-void List::insertFront(int key) {
+template <typename T>
+void List<T>::insertFront(T key) {
     // Einfügen eines neuen Knotens am Anfang der Liste
 /*
 	Einen neuen Knoten mit dem Schlüsselwert key am Anfang der Liste einfügen
 */
 
 
-    Node *newEntry = new Node;
+    Node<T> *newEntry = new Node<T>;
     newEntry->key = key;
     newEntry->next = nullptr;
     newEntry->prev = nullptr;
 
-    if (!this->head_tail->next) {
+    if (this->head_tail->next == this->head_tail) {
         this->head_tail->next = newEntry;
-        newEntry->prev = head_tail;
-        newEntry->next = head_tail;
+        newEntry->prev = this->head_tail;
+        newEntry->next = this->head_tail;
+        this->head_tail->prev = newEntry;
 
         this->list_size++;
 
         return;
     }
 
-    Node *ptr = this->head_tail->next;
+    Node<T> *ptr = this->head_tail->next;
 
     this->head_tail->next = newEntry;
-    this->head_tail->next->next = ptr;
-    this->head_tail->next->prev = this->head_tail;
-    ptr->prev = this->head_tail->next;
+    newEntry->prev = this->head_tail;
+    newEntry->next = ptr;
+    ptr->prev = newEntry;
 
     this->list_size++;
 }
 
-void List::insertFront(List &_List) {
+template <typename T>
+void List<T>::insertFront(List<T> &_List) {
     // Einfügen einer vorhandenen Liste am Anfang
     /*
     Die einzufügenden Knoten werden übernommen (nicht kopiert)
@@ -126,11 +181,11 @@ void List::insertFront(List &_List) {
 	Diese Knoten (koplette Kette) werden an den Anfang der Liste (this) übertragen ohne sie zu kopieren!
 */
 
-    if(!_List.head_tail->next) {
+    if(_List.head_tail->next == _List.head_tail) {
         return;
     }
 
-    if(!this->head_tail->next) {
+    if(this->head_tail->next == this->head_tail) {
         this->head_tail->next = _List.head_tail->next;
         _List.head_tail->next->prev = this->head_tail;
 
@@ -148,10 +203,14 @@ void List::insertFront(List &_List) {
     _List.head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
     this->head_tail->next = _List.head_tail->next;          // this->head_tail --> List->first
 
+    _List.head_tail->next = _List.head_tail ;
+    _List.head_tail->prev = _List.head_tail;
+
     this->list_size += _List.list_size;
 }
 
-void List::insertFront(List *_List) {
+template <typename T>
+void List<T>::insertFront(List<T> *_List) {
     // Einfügen einer vorhandenen Liste am Anfang
     /*
     Die einzufügenden Knoten werden übernommen (nicht kopiert)
@@ -163,11 +222,11 @@ void List::insertFront(List *_List) {
 	Diese Knoten (koplette Kette) werden an den Anfang der Liste (this) übertragen ohne sie zu kopieren!
 */
 
-    if(!_List->head_tail->next) {
+    if(_List->head_tail->next == _List->head_tail) {
         return;
     }
 
-    if(!this->head_tail->next) {
+    if(this->head_tail->next == this->head_tail) {
         this->head_tail->next = _List->head_tail->next;
         _List->head_tail->next->prev = this->head_tail;
 
@@ -185,34 +244,35 @@ void List::insertFront(List *_List) {
     _List->head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
     this->head_tail->next = _List->head_tail->next;          // this->head_tail --> List->first
 
+    _List->head_tail->next = _List->head_tail ;
+    _List->head_tail->prev = _List->head_tail;
+
     this->list_size += _List->list_size;
 }
 
-void List::insertBack(int key) {
+template <typename T>
+void List<T>::insertBack(T key) {
     // Einfügen eines neuen Knotens am Ende der Liste
 /*
 	Einen neuen Knoten mit dem Schlüsselwert key am Ende der Liste einfügen
 */
-    Node *newEntry = new Node;
+    Node<T> *newEntry = new Node<T>;
     newEntry->key = key;
     newEntry->next = nullptr;
     newEntry->prev = nullptr;
 
-    if (!this->head_tail->next) {
+    if (this->head_tail->next == this->head_tail) {
         this->head_tail->next = newEntry;
         newEntry->prev = head_tail;
         newEntry->next = head_tail;
+        this->head_tail->prev = newEntry;
 
         this->list_size++;
 
         return;
     }
 
-    Node *ptr = this->head_tail->next;
-
-    while(ptr->next != this->head_tail) {
-        ptr = ptr->next;
-    }
+    Node<T>*ptr = this->head_tail->prev;
 
     ptr->next = newEntry;
     newEntry->next = this->head_tail;
@@ -222,7 +282,8 @@ void List::insertBack(int key) {
     this->list_size++;
 }
 
-void List::insertBack(List &_List) {
+template <typename T>
+void List<T>::insertBack(List<T> &_List) {
     // Einfügen einer vorhandenen Liste am Ende
     /*
     Die einzufügenden Knoten werden übernommen (nicht kopiert)
@@ -234,13 +295,13 @@ void List::insertBack(List &_List) {
 	Diese Knoten (koplette Kette) werden an das Ende der Liste (this) angehangen ohne sie zu kopieren!
 */
 
-    if(!_List.head_tail->next) {
+    if(_List.head_tail->next == _List.head_tail) {
         return;
     }
 
     int size = _List.list_size;
 
-    if(!this->head_tail->next) {
+    if(this->head_tail->next == this->head_tail) {
         this->head_tail->next = _List.head_tail->next;
         _List.head_tail->next->prev = this->head_tail;
 
@@ -252,15 +313,20 @@ void List::insertBack(List &_List) {
         return;
     }
 
-    this->head_tail->prev->next = _List.head_tail->next;
-    _List.head_tail->next->prev = this->head_tail->prev;
-    _List.head_tail->prev->next = this->head_tail;
-    this->head_tail->prev = _List.head_tail->prev;
+    this->head_tail->prev->next = _List.head_tail->next;    // this->last --> List->first
+    _List.head_tail->next->prev = this->head_tail->prev;    // this->last <-- List->first
+
+    _List.head_tail->prev->next = this->head_tail;          // this->head_tail <-- List->last
+    this->head_tail->prev = _List.head_tail->prev;          // this->head_tail --> List->last
+
+    _List.head_tail->next = _List.head_tail ;
+    _List.head_tail->prev = _List.head_tail;
 
     this->list_size += size;
 }
 
-void List::insertBack(List *_List) {
+template <typename T>
+void List<T>::insertBack(List<T> *_List) {
     // Einfügen einer vorhandenen Liste am Ende
     /*
     Die einzufügenden Knoten werden übernommen (nicht kopiert)
@@ -271,11 +337,11 @@ void List::insertBack(List *_List) {
 	Es wird ein Objekt übergeben in dem Knoten vorhanden sein können.
 	Diese Knoten (koplette Kette) werden an das Ende der Liste (this) angehangen ohne sie zu kopieren!
 */
-    if(!_List->head_tail->next) {
+    if(_List->head_tail->next == _List->head_tail) {
         return;
     }
 
-    if(!this->head_tail->next) {
+    if(this->head_tail->next == this->head_tail) {
         this->head_tail->next = _List->head_tail->next;
         _List->head_tail->next->prev = this->head_tail;
 
@@ -289,13 +355,18 @@ void List::insertBack(List *_List) {
 
     this->head_tail->prev->next = _List->head_tail->next;
     _List->head_tail->next->prev = this->head_tail->prev;
+
     _List->head_tail->prev->next = this->head_tail;
     this->head_tail->prev = _List->head_tail->prev;
+
+    _List->head_tail->next = _List->head_tail ;
+    _List->head_tail->prev = _List->head_tail;
 
     this->list_size += _List->list_size;
 }
 
-bool List::getFront(int &key) {
+template <typename T>
+bool List<T>::getFront(T &key) {
     // entnehmen des Knotens am Anfang der Liste
     // der Wert wird als Parameter zurückgegeben
     // der Knoten wird entnommen
@@ -304,24 +375,24 @@ bool List::getFront(int &key) {
 	Die Methode del(key) darf nicht zum löschen benutzt werden.
 */
 
-    if (!this->head_tail->next) {
+    if (this->head_tail->next == this->head_tail) {
         return false;
     }
 
     key = this->head_tail->next->key;
 
-    if (!this->head_tail->next->next) {
-        this->head_tail->next = nullptr;
-        this->head_tail->prev = nullptr;
+    if (this->head_tail->next->next == this->head_tail) {
+        this->head_tail->next = this->head_tail;
+        this->head_tail->prev = this->head_tail;
 
         this->list_size = 0;
 
         return true;
     }
 
-    Node *ptr = this->head_tail->next->next;
+    Node<T> *ptr = this->head_tail->next->next;
 
-    delete(this->head_tail->next);
+    delete this->head_tail->next;
 
     this->head_tail->next = ptr;
     ptr->prev = this->head_tail;
@@ -331,7 +402,8 @@ bool List::getFront(int &key) {
     return true;
 }
 
-bool List::getBack(int &key) {
+template <typename T>
+bool List<T>::getBack(T &key) {
     // entnehmen des Knotens am Ende der Liste
     // der Wert wird als Parameter zurückgegeben
     // der Knoten wird entnommen
@@ -340,46 +412,45 @@ bool List::getBack(int &key) {
 	Die Methode del(key) darf nicht zum löschen benutzt werden.
 */
 
-    if (!this->head_tail->prev) {
+    if (this->head_tail->prev == this->head_tail) {
         return false;
     }
 
     key = this->head_tail->prev->key;
 
     if(this->head_tail->prev->prev == this->head_tail) {
-        this->head_tail->prev = nullptr;
-        this->head_tail->next = nullptr;
+        this->head_tail->prev = this->head_tail;
+        this->head_tail->next = this->head_tail;
 
         this->list_size = 0;
 
         return false;
     }
 
-    //delete(this->head_tail->prev);
+    Node<T> *ptr = this->head_tail->prev->prev;
 
-    Node *ptr = this->head_tail->prev;
+    delete this->head_tail->prev;
 
-    ptr->prev = this->head_tail;
-    this->head_tail->prev = ptr->prev;
-
-    delete(ptr);
+    this->head_tail->prev = ptr;
+    ptr->next = this->head_tail;
 
     this->list_size--;
 
     return true;
 }
 
-bool List::del(int key) {
+template <typename T>
+bool List<T>::del(T key) {
     // Löschen eines gegebenen Knotens
 /*
 	Löschen des Knotens mit dem Schlüssel key
 */
 
-    if (!this->head_tail->next) {
+    if (this->head_tail->next == this->head_tail) {
         return false;
     }
 
-    Node *ptr = this->head_tail->next;
+    Node<T> *ptr = this->head_tail->next;
 
     while(ptr != this->head_tail) {
         if(ptr->key == key) {
@@ -395,20 +466,22 @@ bool List::del(int key) {
 
         ptr = ptr->next;
     }
+
     return false;
 }
 
-bool List::search(int key) {
+template <typename T>
+bool List<T>::search(T key) {
     // suchen eines Knotens
 /*
 	suchen ob ein Knoten mit dem Schlüssel key existiert.
 */
 
-    if(!this->head_tail->next) {
+    if(this->head_tail->next == this->head_tail) {
         return false;
     }
 
-    Node *ptr = this->head_tail->next;
+    Node<T> *ptr = this->head_tail->next;
 
     while(ptr != this->head_tail) {
         if(ptr->key == key) {
@@ -421,7 +494,8 @@ bool List::search(int key) {
     return false;
 }
 
-bool List::swap(int key1, int key2) {
+template <typename T>
+bool List<T>::swap(T key1, T key2) {
     // Vertauschen von zwei Knoten
     // Dabei werden die Zeiger der Knoten und deren Nachbarn verändert.
 /*
@@ -429,71 +503,81 @@ bool List::swap(int key1, int key2) {
 	Es dürfen nicht nur einfach die Schlüssel in den Knoten getauscht werden!
 	Die Knoten sind in der Kette umzuhängen.
 */
-    if (!this->head_tail->next) {
-        return false;
-    }
+    Node<T> *ptr = this->head_tail->next;
+    Node<T> *ptr1 = this->head_tail;
+    Node<T> *ptr2 = this->head_tail;
 
-    if (key1 == key2) {
-        return true;
-    }
 
-    Node *ptr = this->head_tail->next;
-    Node *node1 = nullptr;
-    Node *node2 = nullptr;
-
-    while(ptr != this->head_tail) {
-        if(ptr->key == key1 && node1 == nullptr) {
-            node1 = ptr;
+    while (ptr != this->head_tail) {
+        if (ptr->key == key1 && ptr1 == this->head_tail) {
+            ptr1 = ptr;
+        } else if(ptr->key == key2 && ptr2 == this->head_tail){
+            ptr2 = ptr;
         }
-
-        if(ptr->key == key2 && node2 == nullptr) {
-            node2 = ptr;
-        }
-
-        if(node1 != nullptr && node2 != nullptr) {
-            break;
-        }
-
         ptr = ptr->next;
     }
 
-    if(node1 == nullptr|| node2 == nullptr) {
+    if (ptr1->next == ptr2) {
+        Node<T> *ptr_next = ptr2->next;
+        Node<T> *ptr_prev = ptr1->prev;
+
+        ptr1->next = ptr_next;
+        ptr1->prev = ptr2;
+        ptr_next->prev = ptr1;
+
+        ptr2->next = ptr1;
+        ptr2->prev = ptr_prev;
+        ptr_prev->next = ptr2;
+
+        return true;
+    } else if (ptr2->next == ptr1) {
+        Node<T> *ptr_next = ptr1->next;
+        Node<T> *ptr_prev = ptr2->prev;
+
+        ptr2->next = ptr_next;
+        ptr2->prev = ptr1;
+        ptr_next->prev = ptr2;
+
+        ptr1->next = ptr2;
+        ptr1->prev = ptr_prev;
+        ptr_prev->next = ptr1;
         return true;
     }
 
-    Node *temp = head_tail->next;
+    if (ptr1 != this->head_tail && ptr2 != this->head_tail) {
+        Node<T> *ptr_next = ptr2->next;
+        Node<T> *ptr_prev = ptr2->prev;
 
-    while(temp->prev->key != node1->key) {
-        temp = temp->next;
+        ptr2->next = ptr1->next;
+        ptr2->prev = ptr1->prev;
+        ptr1->prev->next = ptr2;
+        ptr1->next->prev = ptr2;
+
+        ptr1->next = ptr_next;
+        ptr1->prev = ptr_prev;
+        ptr_prev->next = ptr1;
+        ptr_next->prev = ptr1;
+
+        return true;
     }
 
-    node1->next = node2->next;
-    node2->next->prev = node1;
-    node2->next = temp;
-    temp->prev = node2;
-    node2->prev->next = node1;
-    node1->prev->next = node2;
-    temp = node2->prev;
-    node2->prev = node1->prev;
-    node1->prev = temp;
-
-
-    return true;
+    return false;
 }
 
-int List::size() {
+template <typename T>
+int List<T>::size() {
     // Rückgabe der Knoten in der Liste mit O(1)
 /*
 	Anzahl der Knoten in der Liste zurückgeben.
 */
-    if (!this->head_tail->next) {
+    if (this->head_tail->next == this->head_tail) {
         return 0;
     }
 
-    Node *ptr = this->head_tail->next;
-    int counter = 1;
+    Node<T> *ptr = this->head_tail->next;
+    int counter = 0;
 
-    while(ptr->next != this->head_tail) {
+    while(ptr != this->head_tail) {
         counter++;
         ptr = ptr->next;
     }
@@ -501,11 +585,12 @@ int List::size() {
     return counter;
 }
 
-bool List::test() {
+template <typename T>
+bool List<T>::test() {
     // Testmethode: die Methode durchläuft die Liste vom Anfang bis zum Ende und zurück
     // Es werden dabei die Anzahl der Knoten gezählt.
     // Stimmt die Anzahl der Knoten überein liefert die Methode true
-    Node *tmp = head_tail->next;
+    Node<T> *tmp = head_tail->next;
     int i_next = 0, i_prev = 0;
     while (tmp != head_tail) {
         tmp = tmp->next;
@@ -522,14 +607,15 @@ bool List::test() {
     return i_prev == i_next;
 }
 
-List &List::operator=(const List &_List) {
+template <typename T>
+List<T> &List<T>::operator=(const List<T> &_List) {
     // in dem Objekt _List sind die Knotenwerte enthalten, die Kopiert werden sollen.
     // Kopiert wird in das Objekt "this"
     if (this == &_List) return *this;        //  !! keine Aktion notwendig
     list_form = _List.list_form;
-    Node *tmp_node;
+    Node<T> *tmp_node;
     if (list_size) {
-        Node *tmp_del;
+        Node<T> *tmp_del;
         tmp_node = head_tail->next;
         while (tmp_node != head_tail)        // Alle eventuell vorhandenen Knoten in this löschen
         {
@@ -550,14 +636,15 @@ List &List::operator=(const List &_List) {
     return *this;
 }
 
-List &List::operator=(const List *_List) {
+template <typename T>
+List<T> &List<T>::operator=(const List<T> *_List) {
     // in dem Objekt _List sind die Knotenwerte enthalten, die Kopiert werden sollen.
     // Kopiert wird in das Objekt "this"
     if (this == _List) return *this;        //  !! keine Aktion notwendig
     list_form = _List->list_form;
-    Node *tmp_node;
+    Node<T> *tmp_node;
     if (list_size) {
-        Node *tmp_del;
+        Node<T> *tmp_del;
         tmp_node = head_tail->next;
         while (tmp_node != head_tail)        // Alle eventuell vorhandenen Knoten in this löschen
         {
@@ -579,12 +666,13 @@ List &List::operator=(const List *_List) {
     return *this;
 }
 
-List &List::operator+(const List &List_Append) {
+template <typename T>
+List<T> &List<T>::operator+(const List<T> &List_Append) {
     // Die Methode +
     // Es werden zwei Listen aneinander gehangen.
     // Dabei werden beide Ursprungslisten nicht verändert. Es entsteht eine neue Ergebnisliste.
-    Node *tmp_node;
-    List *tmp;
+    Node<T> *tmp_node;
+    List<T> *tmp;
     if (temp) {                                        // this ist eine temporäre Liste und kann verändert werden
         tmp = this;
     } else {
@@ -602,12 +690,13 @@ List &List::operator+(const List &List_Append) {
     return *tmp;
 }
 
-List &List::operator+(const List *List_Append) {
+template <typename T>
+List<T> &List<T>::operator+(const List<T> *List_Append) {
     // Die Methode +
     // Es werden zwei Listen aneinander gehangen.
     // Dabei werden beide Ursprungslisten nicht verändert. Es entsteht eine neue Ergebnisliste.
-    Node *tmp_node;
-    List *tmp;
+    Node<T> *tmp_node;
+    List<T> *tmp;
     if (temp) {                                        // this ist eine temporäre Liste und kann verändert werden
         tmp = this;
     } else {
@@ -625,7 +714,8 @@ List &List::operator+(const List *List_Append) {
     return *tmp;
 }
 
-void List::format(const std::string &start, const std::string &zwischen, const std::string &ende) {
+template <typename T>
+void List<T>::format(const std::string &start, const std::string &zwischen, const std::string &ende) {
     // Setzen des Formates für die Ausgabesteuerung der Liste bei cout
     // das Format wird für den überladenen Operator << verwendet
     list_form.start = start;
@@ -633,67 +723,22 @@ void List::format(const std::string &start, const std::string &zwischen, const s
     list_form.ende = ende;
 }
 
-std::ostream &operator<<(std::ostream &stream, List const &Liste) {
+template <typename T>
+std::ostream &operator<<(std::ostream &stream, List<T> const &Liste) {
     // Ausgabe der Liste mit cout
     stream << Liste.list_form.start;
-    for (Node *tmp = Liste.head_tail->next; tmp != Liste.head_tail; tmp = tmp->next)
+    for (Node<T> *tmp = Liste.head_tail->next; tmp != Liste.head_tail; tmp = tmp->next)
         stream << tmp->key << (tmp->next == Liste.head_tail ? Liste.list_form.ende : Liste.list_form.zwischen);
     if (Liste.temp) delete &Liste;            // wurde eine temporäre Liste übergeben, dann wird diese gelöscht
     return stream;
 }
 
-std::ostream &operator<<(std::ostream &stream, List const *Liste) {
+template <typename T>
+std::ostream &operator<<(std::ostream &stream, List<T> const *Liste) {
     // Ausgabe der Liste mit cout
     stream << Liste->list_form.start;
-    for (Node *tmp = Liste->head_tail->next; tmp != Liste->head_tail; tmp = tmp->next)
+    for (Node<T> *tmp = Liste->head_tail->next; tmp != Liste->head_tail; tmp = tmp->next)
         stream << tmp->key << (tmp->next == Liste->head_tail ? Liste->list_form.ende : Liste->list_form.zwischen);
     if (Liste->temp) delete Liste;            // wurde eine temporäre Liste übergeben, dann wird diese gelöscht
     return stream;
 }
-
-
-class List {
-    /*
-    Die Klasse List dient zur Verwaltung von Knoten (Node). Mit Hilfe der Klasse List
-    kann ein Stapel oder Warteschlange realisiert werden.
-    */
-private:
-    struct form { std::string start = "<< "; std::string zwischen = ", "; std::string ende = " >>\n"; } list_form;
-    Node * head_tail;						// Zeiger auf Kopf- und End-Element -> next der 1. Knoten; -> prev der letzte Knoten
-    int list_size;							// Länge der Kette
-    bool temp;								// normalerweise false; ist true, wenn es sich um eine temoräre Liste handelt
-    // die innerhalb der überladenen Operatoren angelegt wird
-public:
-    List();
-    List(const List & _List);				// Kopie Konstruktor
-    List(const List * _List);				// Kopie Konstruktor
-    ~List();
-    void insertFront(int key);				// Einfügen eines Knotens am Anfang
-    void insertFront(List & _List);			// Einfügen einer vorhandenen Liste am Anfang
-    void insertFront(List * _List);			// Einfügen einer vorhandenen Liste am Anfang
-    void insertBack(int key);				// Einfügen eines Knotesn am Ende
-    void insertBack(List & _List);			// Einfügen einer vorhandenen Liste am Ende
-    void insertBack(List * _List);			// Einfügen einer vorhandenen Liste am Ende
-    bool getFront(int & key);				// Entnehmen eines Knoten am Anfang
-    bool getBack(int & key);				// Entnehmen eines Knoten am Ende
-    bool del(int key);						// löschen eines Knotens [key]
-    bool search(int key);					// Suchen eines Knoten
-    bool swap(int key1, int key2);			// Knoten in der Liste vertauschen
-    int size();							// Größe der Lise (Anzahl der Knoten)
-    bool test();						// Überprüfen der Zeigerstruktur der Liste
-    void format(const std::string & start, const std::string & zwischen, const std::string & ende);
-    // Mit der format-Methode kann die Ausgabe gesteuert werden: operator <<
-    // start: stirng vor der Ausgabe der Liste
-    // zwischen: string zwischen Listenknoten
-    // ende: string am Ende der Liste
-    List & operator = (const List & _List);						// Zuweisungsoperator definieren
-    List & operator = (const List * _List);						// Zuweisungsoperator definieren
-    List & operator + (const List & List_Append);				// Listen zusammenführen zu einer Liste
-    List & operator + (const List * List_Append);				// Listen zusammenführen zu einer Liste
-    friend std::ostream & operator << (std::ostream & stream, List const & Liste);		// Ausgabeoperator überladen
-    friend std::ostream & operator << (std::ostream & stream, List const * Liste);		// Ausgabeoperator überladen
-    friend Node* get_anker(List& l);
-    friend int get_AnzahlNodes(List& l);
-};
-
-#endif

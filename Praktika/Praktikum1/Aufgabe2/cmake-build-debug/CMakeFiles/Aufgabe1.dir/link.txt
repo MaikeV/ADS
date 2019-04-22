@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Aufgabe1.dir/main.cpp.o CMakeFiles/Aufgabe1.dir/Node.cpp.o CMakeFiles/Aufgabe1.dir/List.cpp.o CMakeFiles/Aufgabe1.dir/ListTest.cpp.o  -o Aufgabe1 
+/usr/bin/c++  -g   CMakeFiles/Aufgabe1.dir/main.cpp.o  -o Aufgabe1 

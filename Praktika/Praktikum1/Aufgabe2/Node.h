@@ -5,28 +5,31 @@
 #ifndef _NODE_H
 #define _NODE_H
 
-#include "Node.h"
-Node::Node() {
+template <class T> class Node {
+public:
+    T key;
+    Node * next, * prev;
+public:
+    Node();
+    Node(T key, Node * next = 0, Node * prev = 0);
+    ~Node();
+};
+
+template <class T>
+Node<T>::Node() {
     key = 0;
     next = 0;
     prev = 0;
 }
 
-Node::Node(int key, Node * next, Node * prev) {
+template <class T>
+Node<T>::Node(T key, Node<T> * next, Node<T> * prev) {
     this->key = key;
     this->next = next;
     this->prev = prev;
 }
 
-Node::~Node(){}
+template <class T>
+Node<T>::~Node(){}
 
-class Node {
-public:
-    int key;
-    Node * next, * prev;
-public:
-    Node();
-    Node(int key, Node * next = 0, Node * prev = 0);
-    ~Node();
-};
 #endif

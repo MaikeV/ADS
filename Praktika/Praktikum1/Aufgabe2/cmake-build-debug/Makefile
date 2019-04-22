@@ -123,87 +123,6 @@ Aufgabe1/fast:
 	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/build
 .PHONY : Aufgabe1/fast
 
-List.o: List.cpp.o
-
-.PHONY : List.o
-
-# target to build an object file
-List.cpp.o:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/List.cpp.o
-.PHONY : List.cpp.o
-
-List.i: List.cpp.i
-
-.PHONY : List.i
-
-# target to preprocess a source file
-List.cpp.i:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/List.cpp.i
-.PHONY : List.cpp.i
-
-List.s: List.cpp.s
-
-.PHONY : List.s
-
-# target to generate assembly for a file
-List.cpp.s:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/List.cpp.s
-.PHONY : List.cpp.s
-
-ListTest.o: ListTest.cpp.o
-
-.PHONY : ListTest.o
-
-# target to build an object file
-ListTest.cpp.o:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.o
-.PHONY : ListTest.cpp.o
-
-ListTest.i: ListTest.cpp.i
-
-.PHONY : ListTest.i
-
-# target to preprocess a source file
-ListTest.cpp.i:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.i
-.PHONY : ListTest.cpp.i
-
-ListTest.s: ListTest.cpp.s
-
-.PHONY : ListTest.s
-
-# target to generate assembly for a file
-ListTest.cpp.s:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/ListTest.cpp.s
-.PHONY : ListTest.cpp.s
-
-Node.o: Node.cpp.o
-
-.PHONY : Node.o
-
-# target to build an object file
-Node.cpp.o:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Node.cpp.o
-.PHONY : Node.cpp.o
-
-Node.i: Node.cpp.i
-
-.PHONY : Node.i
-
-# target to preprocess a source file
-Node.cpp.i:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Node.cpp.i
-.PHONY : Node.cpp.i
-
-Node.s: Node.cpp.s
-
-.PHONY : Node.s
-
-# target to generate assembly for a file
-Node.cpp.s:
-	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Node.cpp.s
-.PHONY : Node.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -240,15 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Aufgabe1"
 	@echo "... edit_cache"
-	@echo "... List.o"
-	@echo "... List.i"
-	@echo "... List.s"
-	@echo "... ListTest.o"
-	@echo "... ListTest.i"
-	@echo "... ListTest.s"
-	@echo "... Node.o"
-	@echo "... Node.i"
-	@echo "... Node.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
