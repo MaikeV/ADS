@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/List.h
+Node.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/Node.h
+string
+-
+iostream
+-
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/Node.h
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/main.cpp
+iostream
+-
+List.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/List.h
+tweet.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/tweet.h
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum1/Aufgabe3/tweet.h
+string
+-
+ctime
+-
+iomanip
+-
+
