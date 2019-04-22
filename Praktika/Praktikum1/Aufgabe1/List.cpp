@@ -60,20 +60,20 @@ List::~List() {
 	hier alle Knoten löschen, die im Objekt List allokiert wurden
 */
 
-//    if(this->head_tail->next != this->head_tail) {
-//        Node *ptr = this->head_tail;
-//        Node *temp;
+//    if(this->head_tail->next != head_tail && head_tail->prev != head_tail) {
 //
-//        this->head_tail->prev->next = nullptr;
+//        Node *ptr = this->head_tail->next;
+//        Node *tmp;
 //
-//        while(ptr->next != nullptr) {
-//            temp = ptr->next;
-//            delete ptr;
-//            ptr = temp;
+//        while(ptr != head_tail) {
+//            ptr = ptr->next;
+//            delete ptr->prev;
 //        }
-//    }
 //
-//    this->head_tail = nullptr;
+//        head_tail->next = head_tail;
+//        head_tail->prev = head_tail;
+//        head_tail->key = 0;
+//    }
 }
 
 void List::insertFront(int key) {
@@ -81,6 +81,7 @@ void List::insertFront(int key) {
 /*
 	Einen neuen Knoten mit dem Schlüsselwert key am Anfang der Liste einfügen
 */
+
 
     Node *newEntry = new Node;
     newEntry->key = key;
@@ -92,6 +93,8 @@ void List::insertFront(int key) {
         newEntry->prev = head_tail;
         newEntry->next = head_tail;
 
+        this->list_size++;
+
         return;
     }
 
@@ -101,6 +104,8 @@ void List::insertFront(int key) {
     this->head_tail->next->next = ptr;
     this->head_tail->next->prev = this->head_tail;
     ptr->prev = this->head_tail->next;
+
+    this->list_size++;
 }
 
 void List::insertFront(List &_List) {
@@ -126,6 +131,8 @@ void List::insertFront(List &_List) {
         this->head_tail->prev = _List.head_tail->prev;
         _List.head_tail->prev->next = this->head_tail;
 
+        this->list_size += _List.list_size;
+
         return;
     }
 
@@ -134,6 +141,8 @@ void List::insertFront(List &_List) {
 
     _List.head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
     this->head_tail->next = _List.head_tail->next;          // this->head_tail --> List->first
+
+    this->list_size += _List.list_size;
 }
 
 void List::insertFront(List *_List) {
@@ -159,6 +168,8 @@ void List::insertFront(List *_List) {
         this->head_tail->prev = _List->head_tail->prev;
         _List->head_tail->prev->next = this->head_tail;
 
+        this->list_size += _List->list_size;
+
         return;
     }
 
@@ -167,6 +178,8 @@ void List::insertFront(List *_List) {
 
     _List->head_tail->next->prev = this->head_tail;          // this->head_tail <-- List->first
     this->head_tail->next = _List->head_tail->next;          // this->head_tail --> List->first
+
+    this->list_size += _List->list_size;
 }
 
 void List::insertBack(int key) {
@@ -184,6 +197,8 @@ void List::insertBack(int key) {
         newEntry->prev = head_tail;
         newEntry->next = head_tail;
 
+        this->list_size++;
+
         return;
     }
 
@@ -197,6 +212,8 @@ void List::insertBack(int key) {
     newEntry->next = this->head_tail;
     newEntry->prev = ptr;
     this->head_tail->prev = newEntry;
+
+    this->list_size++;
 }
 
 void List::insertBack(List &_List) {
@@ -215,6 +232,8 @@ void List::insertBack(List &_List) {
         return;
     }
 
+    int size = _List.list_size;
+
     if(!this->head_tail->next) {
         this->head_tail->next = _List.head_tail->next;
         _List.head_tail->next->prev = this->head_tail;
@@ -222,14 +241,18 @@ void List::insertBack(List &_List) {
         this->head_tail->prev = _List.head_tail->prev;
         _List.head_tail->prev->next = this->head_tail;
 
+        this->list_size += size;
+
         return;
     }
 
-    this->head_tail->prev->next = _List.head_tail->next;
-    _List.head_tail->next->prev = this->head_tail->prev;
-    _List.head_tail->prev->next = this->head_tail;
-    this->head_tail->prev = _List.head_tail->prev;
+    this->head_tail->prev->next = _List.head_tail->next;    // this->last --> List->first
+    _List.head_tail->next->prev = this->head_tail->prev;    // this->last <-- List->first
 
+    _List.head_tail->prev->next = this->head_tail;          // this->head_tail <-- List->last
+    this->head_tail->prev = _List.head_tail->prev;          // this->head_tail --> List->last
+
+    this->list_size += size;
 }
 
 void List::insertBack(List *_List) {
@@ -254,13 +277,18 @@ void List::insertBack(List *_List) {
         this->head_tail->prev = _List->head_tail->prev;
         _List->head_tail->prev->next = this->head_tail;
 
+        this->list_size += _List->list_size;
+
         return;
     }
 
     this->head_tail->prev->next = _List->head_tail->next;
     _List->head_tail->next->prev = this->head_tail->prev;
+
     _List->head_tail->prev->next = this->head_tail;
     this->head_tail->prev = _List->head_tail->prev;
+
+    this->list_size += _List->list_size;
 }
 
 bool List::getFront(int &key) {
@@ -282,6 +310,8 @@ bool List::getFront(int &key) {
         this->head_tail->next = nullptr;
         this->head_tail->prev = nullptr;
 
+        this->list_size = 0;
+
         return true;
     }
 
@@ -291,6 +321,8 @@ bool List::getFront(int &key) {
 
     this->head_tail->next = ptr;
     ptr->prev = this->head_tail;
+
+    this->list_size--;
 
     return true;
 }
@@ -313,6 +345,9 @@ bool List::getBack(int &key) {
     if(this->head_tail->prev->prev == this->head_tail) {
         this->head_tail->prev = nullptr;
         this->head_tail->next = nullptr;
+
+        this->list_size = 0;
+
         return false;
     }
 
@@ -324,6 +359,8 @@ bool List::getBack(int &key) {
     this->head_tail->prev = ptr->prev;
 
     delete(ptr);
+
+    this->list_size--;
 
     return true;
 }
@@ -346,6 +383,8 @@ bool List::del(int key) {
             ptr->next->prev = ptr->prev;
 
             delete(ptr);
+
+            this->list_size--;
 
             return true;
         }
@@ -418,8 +457,6 @@ bool List::swap(int key1, int key2) {
         return true;
     }
 
-    //std::cout << node1->key << "-" << node2->key << std::endl;
-
     Node *temp = head_tail->next;
 
     while(temp->prev->key != node1->key) {
@@ -468,7 +505,6 @@ bool List::test() {
     int i_next = 0, i_prev = 0;
     while (tmp != head_tail) {
         tmp = tmp->next;
-        std::cout << list_size;
         if (i_next > list_size) return false;
         i_next++;
     }
