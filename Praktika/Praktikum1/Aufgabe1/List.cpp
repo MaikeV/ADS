@@ -74,20 +74,6 @@ List::~List() {
         this->head_tail = ptr;
     }
 
-//    if(this->head_tail->next != head_tail && head_tail->prev != head_tail) {
-//
-//        Node *ptr = this->head_tail->next;
-//        Node *tmp;
-//
-//        while(ptr != head_tail) {
-//            ptr = ptr->next;
-//            delete ptr->prev;
-//        }
-//
-//        head_tail->next = head_tail;
-//        head_tail->prev = head_tail;
-//        head_tail->key = 0;
-//    }
 }
 
 void List::insertFront(int key) {

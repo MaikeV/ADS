@@ -5,6 +5,71 @@
 #include "catch.hpp"
 #include "List.h"
 
+void test() {
+    List TestList;
+
+    std::cout << "================================" << std::endl;
+    std::cout << "         EIGENE TESTS: " << std::endl;
+    std::cout << "================================" << std::endl << std::endl;
+
+
+    TestList.insertBack(5);
+    TestList.insertBack(6);
+    TestList.insertBack(7);
+    TestList.insertBack(8);
+
+    TestList.insertFront(1);
+    TestList.insertFront(2);
+    TestList.insertFront(3);
+    TestList.insertFront(4);
+
+    std::cout << TestList;
+
+    int key = 8;
+    if (!TestList.getBack(key)) {
+        std::cout << "Failure: failed to get " << key << " from the back of the list." << std::endl;
+    } else {
+        std::cout << "Success: " << key << " is the back of the list." << std::endl;
+    }
+
+    std::cout << std::endl << TestList;
+
+    key = 4;
+    if (!TestList.getFront(key)) {
+        std::cout << "Failure: failed to get " << key << " from the front of the list." << std::endl;
+    } else {
+        std::cout << "Success: " << key << " is the front of the list." << std::endl;
+    }
+
+    std::cout << std::endl << TestList << std::endl;
+
+    std::cout << "Swap [1, 5]: ";
+    TestList.swap(1, 5);
+    std::cout << TestList << std::endl;
+
+    std::cout << "Swap [7, 6]: ";
+    TestList.swap(6, 7);
+    std::cout << TestList << std::endl;
+
+    std::cout << "Swap [3, 2]: ";
+    TestList.swap(3, 2);
+    std::cout << TestList << std::endl;
+
+    key = 2;
+    if(!TestList.search(key)) {
+        std::cout << "Failure: failed to find " << key << " in the list!" << std::endl;
+    } else {
+        std::cout << "Success: found " << key << " in list!" << std::endl;
+    }
+
+    key = 8;
+    if(!TestList.search(key)) {
+        std::cout << "Success: failed to find " << key << " in the list!" << std::endl;
+    } else {
+        std::cout << "Failure: found " << key << " in list!" << std::endl;
+    }
+}
+
 int main() {
     int result = Catch::Session().run();
     int i;
@@ -62,6 +127,8 @@ int main() {
     } else {
         std::cout << "MyList3: Zeiger ******Error\n\n";
     }
+
+    test();
 
     //system("PAUSE");
     return 0;

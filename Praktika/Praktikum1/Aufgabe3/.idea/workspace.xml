@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ac2543-719a-4e2a-ba7d-548a5f589e0b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Aufgabe1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Aufgabe1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Aufgabe2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Aufgabe2/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="28ac2543-719a-4e2a-ba7d-548a5f589e0b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,12 +160,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555939810926</updated>
       <workItem from="1555939812262" duration="9145000" />
-      <workItem from="1555963132400" duration="392000" />
+      <workItem from="1555963132400" duration="575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9537000" />
+    <option name="totallyTimeSpent" value="9720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
@@ -178,7 +175,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3293348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
