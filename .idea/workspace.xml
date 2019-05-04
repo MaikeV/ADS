@@ -9,7 +9,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e52a0c8-da18-4211-8bcb-d859b737947a" name="Default Changelist" comment="" />
+    <list default="true" id="3e52a0c8-da18-4211-8bcb-d859b737947a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/List.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/cmake-build-debug/Aufgabe1" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/cmake-build-debug/Aufgabe1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/cmake-build-debug/CMakeFiles/Aufgabe1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1/cmake-build-debug/CMakeFiles/Aufgabe1.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe3/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,17 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="70" />
+    <option name="y" value="27" />
+    <option name="width" value="925" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -53,26 +61,25 @@
               <item name="ADS" type="b2602c69:ProjectViewProjectNode" />
               <item name="ADS" type="462c0819:PsiDirectoryNode" />
               <item name="Praktika" type="462c0819:PsiDirectoryNode" />
-              <item name="Praktikum1" type="462c0819:PsiDirectoryNode" />
+              <item name="Praktikum2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ADS" type="b2602c69:ProjectViewProjectNode" />
               <item name="ADS" type="462c0819:PsiDirectoryNode" />
               <item name="Praktika" type="462c0819:PsiDirectoryNode" />
-              <item name="Praktikum1" type="462c0819:PsiDirectoryNode" />
+              <item name="Praktikum2" type="462c0819:PsiDirectoryNode" />
               <item name="Aufgabe1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Praktika/Praktikum1/Aufgabe1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Praktika/Praktikum2/Aufgabe1" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -101,16 +108,17 @@
       <workItem from="1554121568067" duration="259000" />
       <workItem from="1554122079005" duration="70000" />
       <workItem from="1555924512128" duration="55000" />
+      <workItem from="1556961691835" duration="369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="384000" />
+    <option name="totallyTimeSpent" value="753000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
+    <frame x="70" y="27" width="925" height="1053" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19456762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3139932" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -125,7 +133,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info active="true" anchor="bottom" id="CMake" order="12" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="CMake" order="12" visible="true" weight="0.23446019" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />

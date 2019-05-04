@@ -361,7 +361,7 @@ bool List::getBack(int &key) {
 
         this->list_size = 0;
 
-        return false;
+        return true;
     }
 
     Node *ptr = this->head_tail->prev->prev;

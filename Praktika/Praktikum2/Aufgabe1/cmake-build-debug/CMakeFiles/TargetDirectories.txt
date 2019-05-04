@@ -1,0 +1,2 @@
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/edit_cache.dir
