@@ -2,7 +2,7 @@
 * ADS Praktikum 2.1
 * Unit-Testdatei
 *
-* Änderungen fürs Praktikum untersagt!
+* ï¿½nderungen fï¿½rs Praktikum untersagt!
 *************************************************/
 #include "catch.hpp"
 #include "Ring.h"
@@ -17,7 +17,7 @@ RingNode * get_anker(Ring& r) {
 }
 
 int get_AnzahlNodes(Ring& r) {
-	return r.AnzahlNodes;
+	return r.numberOfNodes;
 }
 
 TEST_CASE("Ring Testing", "[Ring]" ) {

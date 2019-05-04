@@ -9,20 +9,27 @@
 #include "catch.hpp"
 #include"RingNode.h"
 
-class Ring{
-	
+class Ring {
 	private:
-		// Ihr Code hier:	
-
-		//
-		////////////////////////////////////
+        int numberOfNodes;
+        RingNode *anker;
 	public:
-		// Ihr Code hier:
+        Ring();
 
+        void setNumberOfNodes(int numberOfNodes) {
+            Ring::numberOfNodes = numberOfNodes;
+        }
 
-		//
-		////////////////////////////////////
-		// friend Funktionen müssen unangetastet bleiben! 
-		friend RingNode * get_anker(Ring& r);
-		friend int get_AnzahlNodes(Ring& r);
+        void setAnker(RingNode *anker) {
+            Ring::anker = anker;
+        }
+
+        void addNode(std::string descr, std::string data);
+        bool search(std::string data);
+        void print();
+        int size();
+
+        // friend Funktionen muessen unangetastet bleiben!
+        friend RingNode * get_anker(Ring& r);
+        friend int get_AnzahlNodes(Ring& r);
 };

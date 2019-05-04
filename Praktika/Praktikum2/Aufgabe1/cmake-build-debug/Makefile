@@ -110,6 +110,127 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named Aufgabe1
+
+# Build rule for target.
+Aufgabe1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Aufgabe1
+.PHONY : Aufgabe1
+
+# fast build rule for target.
+Aufgabe1/fast:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/build
+.PHONY : Aufgabe1/fast
+
+Ring.o: Ring.cpp.o
+
+.PHONY : Ring.o
+
+# target to build an object file
+Ring.cpp.o:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Ring.cpp.o
+.PHONY : Ring.cpp.o
+
+Ring.i: Ring.cpp.i
+
+.PHONY : Ring.i
+
+# target to preprocess a source file
+Ring.cpp.i:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Ring.cpp.i
+.PHONY : Ring.cpp.i
+
+Ring.s: Ring.cpp.s
+
+.PHONY : Ring.s
+
+# target to generate assembly for a file
+Ring.cpp.s:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/Ring.cpp.s
+.PHONY : Ring.cpp.s
+
+RingNode.o: RingNode.cpp.o
+
+.PHONY : RingNode.o
+
+# target to build an object file
+RingNode.cpp.o:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingNode.cpp.o
+.PHONY : RingNode.cpp.o
+
+RingNode.i: RingNode.cpp.i
+
+.PHONY : RingNode.i
+
+# target to preprocess a source file
+RingNode.cpp.i:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingNode.cpp.i
+.PHONY : RingNode.cpp.i
+
+RingNode.s: RingNode.cpp.s
+
+.PHONY : RingNode.s
+
+# target to generate assembly for a file
+RingNode.cpp.s:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingNode.cpp.s
+.PHONY : RingNode.cpp.s
+
+RingTest.o: RingTest.cpp.o
+
+.PHONY : RingTest.o
+
+# target to build an object file
+RingTest.cpp.o:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingTest.cpp.o
+.PHONY : RingTest.cpp.o
+
+RingTest.i: RingTest.cpp.i
+
+.PHONY : RingTest.i
+
+# target to preprocess a source file
+RingTest.cpp.i:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingTest.cpp.i
+.PHONY : RingTest.cpp.i
+
+RingTest.s: RingTest.cpp.s
+
+.PHONY : RingTest.s
+
+# target to generate assembly for a file
+RingTest.cpp.s:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/RingTest.cpp.s
+.PHONY : RingTest.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/Aufgabe1.dir/build.make CMakeFiles/Aufgabe1.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -117,7 +238,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... Aufgabe1"
 	@echo "... edit_cache"
+	@echo "... Ring.o"
+	@echo "... Ring.i"
+	@echo "... Ring.s"
+	@echo "... RingNode.o"
+	@echo "... RingNode.i"
+	@echo "... RingNode.s"
+	@echo "... RingTest.o"
+	@echo "... RingTest.i"
+	@echo "... RingTest.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
