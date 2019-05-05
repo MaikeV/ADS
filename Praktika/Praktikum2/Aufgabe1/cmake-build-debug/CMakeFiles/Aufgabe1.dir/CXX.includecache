@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/Ring.cpp
-Ring.h
-/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/Ring.h
-iostream
--
-
 /home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/Ring.h
 string
 -
@@ -463,4 +457,14 @@ algorithm
 -
 cassert
 -
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/main.cpp
+iostream
+-
+string
+-
+Ring.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/Ring.h
+catch.hpp
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe1/catch.hpp
 

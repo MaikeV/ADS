@@ -105,16 +105,21 @@ void Ring::print(){
         return;
     }
 
-    
-
     RingNode *ptr = this->anker;
+    std::vector<RingNode*> vector;
+
+    std::cout << std::endl << "OldAge: " << ptr->getAge() << ", Descr: " << ptr->getDescription() << ", Data: " << ptr->getData() << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
 
     while(ptr->getNext() != this->anker) {
-        std::cout << "OldAge: " << ptr->getAge() << ", Descr: " << ptr->getDescription() << ", Data: " << ptr->getData() << std::endl;
-        std::cout << "----------------------------------------------------" << std::endl;
+        vector.push_back(ptr->getNext());
         ptr =  ptr->getNext();
     }
 
-    std::cout << "OldAge: " << ptr->getAge() << ", Descr: " << ptr->getDescription() << ", Data: " << ptr->getData() << std::endl;
-    std::cout << "----------------------------------------------------" << std::endl;
+    for(int i = vector.size(); i > 0; i--) {
+        std::cout << "OldAge: " << vector.at(i - 1)->getAge() << ", Descr: " << vector.at(i - 1)->getDescription() << ", Data: " << vector.at(i - 1)->getData() << std::endl;
+        std::cout << "----------------------------------------------------" << std::endl;
+    }
+
+    std::cout << std::endl;
 }

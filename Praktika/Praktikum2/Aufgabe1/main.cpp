@@ -54,9 +54,20 @@ int main() {
                 found = ring.search(data);
 
                 if (found) {
-                    std::cout << "+ Gefunden in Backup: " << std::endl;
+                    RingNode *ptr = ring.getNodeByAge(0);
+
+                    std::cout << "+ Gefunden in Backup: ";
+
+                    while(ptr->getNext()->getAge() != 0) {
+                        if(ptr->getData() == data) {
+                            break;
+                        }
+                        ptr = ptr->getNext();
+                    }
+
+                    std::cout << "OldAge: " << ptr->getAge() << ", Beschreibung: " << ptr->getDescription() << ", Daten: " << ptr->getData() << std::endl << std::endl;
                 } else {
-                    std::cout << "+ Datensatz konnte nicht gefunden werden.";
+                    std::cout << "+ Datensatz konnte nicht gefunden werden." <<std::endl << std::endl;
                 }
 
                 break;
