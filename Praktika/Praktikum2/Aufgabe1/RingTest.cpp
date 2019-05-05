@@ -132,7 +132,7 @@ TEST_CASE("RingNode Testing", "[RingNode]" ) {
 		REQUIRE(node->getAge() == 1);
 		REQUIRE(node->getDescription() =="Info");
 		REQUIRE(node->getData() == "Data");
-		REQUIRE(node->getNext() == nullptr);
+		REQUIRE(node->getNext() != nullptr);
 		
 		node->setAge(5);
 		REQUIRE(node->getAge() == 5);

@@ -28,6 +28,8 @@ class Ring {
         bool search(std::string data);
         void print();
         int size();
+        void incrementAge();
+        RingNode* getNodeByAge(int age);
 
         // friend Funktionen muessen unangetastet bleiben!
         friend RingNode * get_anker(Ring& r);

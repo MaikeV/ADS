@@ -24,75 +24,65 @@ int Ring::size() {
         counter++;
         ptr = ptr->getNext();
     }
-
     return counter + 1;
 }
 
+void findInsPlace() {
+
+}
+
+void Ring::incrementAge(){
+    RingNode *node = this->anker;
+    do{
+        node->setAge(node->getAge() + 1);
+        node = node->getNext();
+    } while (node != this->anker);
+}
+
+RingNode* Ring::getNodeByAge(int age){
+    RingNode *ptr = this->anker;
+
+    while(ptr->getAge() != age)
+        ptr = ptr->getNext();
+    return ptr;
+}
+
+
 void Ring::addNode(std::string descr, std::string data) {
-    RingNode *newEntry = new RingNode;
-    newEntry->setNext(nullptr);
-    newEntry->setDescription(descr);
-    newEntry->setData(data);
-    newEntry->setAge(0);
+    RingNode *newNode = new RingNode;
+    newNode->setNext(nullptr);
+    newNode->setDescription(descr);
+    newNode->setData(data);
+    newNode->setAge(0);
+    RingNode* node = this->anker;
 
-    if (this->anker == nullptr) {
-        this->anker = newEntry;
-        newEntry->setNext(this->anker);
-
+    if (node) {
+        incrementAge();
+    }
+    else {
+        newNode->setNext(newNode);
+        this->anker = newNode;
         this->numberOfNodes++;
         return;
     }
 
-    if (size() < 6) {
-        RingNode *ptr = this->anker;
+    if (this->numberOfNodes == 6) {
 
-        this->anker = newEntry;
-        newEntry->setNext(ptr);
+        RingNode *temp = node->getNext();
+        node->setNext(newNode);
+        newNode->setNext(temp->getNext());
+        this->anker = newNode;
+        delete temp;
+    }
+    else {
+        node = this->getNodeByAge(1);
 
-        while (ptr->getNext() != this->anker->getNext()) {
-            ptr->setAge(ptr->getAge() + 1);
-            ptr = ptr->getNext();
-        }
-
-        ptr->setAge(ptr->getAge() + 1);
-        //ptr->setNext(this->anker);
+        newNode->setNext(node->getNext());
+        node->setNext(newNode);
+        this->anker = newNode;
 
         this->numberOfNodes++;
-        return;
     }
-
-    if (size() == 6) {
-        RingNode *ptr = this->anker;
-        RingNode *temp;
-
-        while (ptr->getNext() != this->anker) {
-            if (ptr->getNext()->getAge() == 5) {
-                temp = ptr->getNext()->getNext();
-
-                ptr->setNext(newEntry);
-                newEntry->setNext(temp);
-
-                break;
-            }
-            ptr = ptr->getNext();
-        }
-
-        temp = this->anker;
-
-        this->anker = ptr->getNext();
-        ptr->getNext()->setNext(temp);
-
-        ptr = ptr->getNext()->getNext();
-
-        while (ptr->getNext() != this->anker) {
-            ptr->setAge(ptr->getAge() + 1);
-            ptr = ptr->getNext();
-        }
-
-        ptr->setAge(ptr->getAge() + 1);
-        return;
-    }
-
     std::cout << "Hier: " << this->anker->getData();
 }
 
@@ -111,9 +101,11 @@ bool Ring::search(std::string data){
 
 void Ring::print(){
     if (this->anker == nullptr) {
-        std::cout << "+ Keine Backups vorhanden.";
+        std::cout << "+ Keine Backups vorhanden." << std::endl << std::endl;
         return;
     }
+
+    
 
     RingNode *ptr = this->anker;
 
