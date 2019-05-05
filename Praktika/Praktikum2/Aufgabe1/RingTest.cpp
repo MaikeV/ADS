@@ -2,7 +2,7 @@
 * ADS Praktikum 2.1
 * Unit-Testdatei
 *
-* �nderungen f�rs Praktikum untersagt!
+* Aenderungen fuers Praktikum untersagt!
 *************************************************/
 #include "catch.hpp"
 #include "Ring.h"
