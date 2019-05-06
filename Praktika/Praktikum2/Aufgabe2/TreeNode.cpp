@@ -15,11 +15,11 @@ void TreeNode::print() {
     std::cout << "|";
     std::cout << std::setw(7) << this->getAge();
     std::cout << "|";
-    std::cout << std::setw(11) << this->getIncome();
+    std::cout << std::setw(20) << this->getIncome();
     std::cout << "|";
-    std::cout << std::setw(7) << this->getPLZ();
+    std::cout << std::setw(20) << this->getPLZ();
     std::cout << "|";
-    std::cout << std::setw(7) << this->getNodePosID() << std::endl;
+    std::cout << std::setw(20) << this->getNodePosID() << std::endl;
 }
 
 double TreeNode::calcNodePosID(int age, int plz, double income) {

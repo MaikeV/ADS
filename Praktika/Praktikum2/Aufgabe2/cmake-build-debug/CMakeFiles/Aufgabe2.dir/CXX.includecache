@@ -468,11 +468,3 @@ algorithm
 cassert
 -
 
-/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/main.cpp
-iostream
--
-Tree.h
-/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/Tree.h
-catch.h
-/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/catch.h
-

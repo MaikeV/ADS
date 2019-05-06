@@ -57,7 +57,7 @@ int main() {
 	            std::cin >> yesNo;
 
 	            if(yesNo == 'j') {
-
+	                tree.readFromCsv();
 
 	                std::cout << "+ Daten wurden dem Baum hinzugefuegt." << std::endl << std::endl;
 	                break;
@@ -72,7 +72,7 @@ int main() {
 	            std::cout << "PosId ?> ";
 	            std::cin >> posId;
 
-
+                tree.deleteNode(posId);
 
 	            std::cout << "+ Datensatz wurde geloescht." << std::endl << std::endl;
 	            break;

@@ -22,7 +22,7 @@ TreeNode * get_anker(Tree& Tr) {
 /***********************************************
  * Testroutine des Baums:
  *  - Einfaches Hinzufuegen und Suchen
- *  - Loeschen in unterscheidlicher Auspr�gung
+ *  - Loeschen in unterscheidlicher Auspraegung
  *  + Loeschen ohne Nachfolger
  *  + Loeschen mit einem Nachfolger
  *  + Loeschen mit zwei Nachfolger
@@ -168,14 +168,14 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		nTree->addNode("Mayer6", 25, 0, 0);
 		nTree->addNode("Mayer7", 26, 0, 0);
 
-		TreeNode * tnanker = get_anker(*nTree);  // Initiale �bergrabe des Ankers
+		TreeNode * tnanker = get_anker(*nTree);  // Initiale Uebergrabe des Ankers
 
 		/*
-		L�sche den Baum schrittweise durch entfernen der Wurzel
+		Loesche den Baum schrittweise durch entfernen der Wurzel
 		*/
 		REQUIRE(tnanker->getNodePosID() == 20);
 		nTree->deleteNode(20);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 25);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 30);
@@ -183,7 +183,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()->getNodePosID() == 40);	
 
 		nTree->deleteNode(25);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 26);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 30);
@@ -191,7 +191,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()->getNodePosID() == 40);
 		
 		nTree->deleteNode(26);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 30);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 40);
@@ -199,7 +199,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()== nullptr);
 
 		nTree->deleteNode(30);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 35);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 40);
@@ -207,21 +207,21 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight() == nullptr);
 	
 		nTree->deleteNode(35);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 40);
 		REQUIRE(tnanker->getRight() == nullptr);
 		REQUIRE(tnanker->getLeft()->getNodePosID() == 10);
 
 		nTree->deleteNode(40);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 10);
 		REQUIRE(tnanker->getRight() == nullptr);
 		REQUIRE(tnanker->getLeft() == nullptr);
 		
 		nTree->deleteNode(10);
-		tnanker = get_anker(*nTree); // Anker hat sich ge�ndert, neue �bergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geaendert, neue Uebergabe erfoderlich
 
 		REQUIRE(tnanker == nullptr);		
 	}
@@ -245,7 +245,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 
 /***********************************************
  * Testroutine des Knotens:
- *  - Einfaches pruefen der Getter und Setter in Ausf�hrung 
+ *  - Einfaches pruefen der Getter und Setter in Ausfuehrung
  */
 TEST_CASE("TreeNode Testing", "[TREENODE]" ) {
 		

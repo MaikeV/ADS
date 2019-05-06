@@ -7,17 +7,35 @@
 #include "TreeNode.h"
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
-void findPosByPosID(TreeNode *newNode, TreeNode *childNode) {
+void Tree::readFromCsv() {
+    std::ifstream file("ExportZielanalyse.csv");
+
+    std::string line;
+    std::string name;
+    int age;
+    int plz;
+    double income;
+
+    //name;age;income;plz
+
+    while(std::getline(file, line)) {
+        name = line.substr(0, line.find(';'));
+        
+    }
+}
+
+void addAtPos(TreeNode *newNode, TreeNode *childNode) {
     if(newNode->getNodePosID() < childNode->getNodePosID()) {
         if(childNode->getLeft() != nullptr) {
-            findPosByPosID(newNode, childNode->getLeft());
+            addAtPos(newNode, childNode->getLeft());
         } else {
             childNode->setLeft(newNode);
         }
     } else if(newNode->getNodePosID() > childNode->getNodePosID()) {
         if(childNode->getRight() != nullptr) {
-            findPosByPosID(newNode, childNode->getRight());
+            addAtPos(newNode, childNode->getRight());
         } else{
             childNode->setRight(newNode);
         }
@@ -36,14 +54,14 @@ void Tree::addNode(std::string name, int age, double income, int plz){
 
     if(newNode->getNodePosID() < this->anker->getNodePosID()) {
         if(this->anker->getLeft() != nullptr) {
-            findPosByPosID(newNode, this->anker->getLeft());
+            addAtPos(newNode, this->anker->getLeft());
         } else {
-            this->anker->setRight(newNode);
+            this->anker->setLeft(newNode);
             return;
         }
     } else if(newNode->getNodePosID() > this->anker->getNodePosID()) {
         if(this->anker->getRight() != nullptr) {
-            findPosByPosID(newNode, this->anker->getRight());
+            addAtPos(newNode, this->anker->getRight());
         } else {
             this->anker->setRight(newNode);
             return;
@@ -53,17 +71,36 @@ void Tree::addNode(std::string name, int age, double income, int plz){
     }
 }
 
-TreeNode* Tree::findMinOfRightSubTree(TreeNode *node) {
+TreeNode* Tree::findMin(TreeNode *node) {
+    if(node->getLeft() == nullptr) {
+        return node;
+    }
 
+    findMin(node->getLeft());
 }
 
 TreeNode* Tree::depthSearchByID(TreeNode *node, int posID) {
-    if (node == nullptr) {
-        return nullptr;
+    if(node->getNodePosID() == posID) {
+        return node;
     }
 
-    if(node->getNodePosID() == )
+    if(node->getNodePosID() > posID) {
+        depthSearchByID(node->getLeft(), posID);
+    } else {
+        depthSearchByID(node->getRight(), posID);
+    }
+}
 
+TreeNode* Tree::findPreNode(TreeNode *node, TreeNode *child) {
+    if(node->getLeft() == child || node->getRight() == child) {
+        return node;
+    }
+
+    if(node->getNodePosID() > child->getNodePosID()) {
+        findPreNode(node->getLeft(), child);
+    } else if(node->getNodePosID() < child->getNodePosID()) {
+        findPreNode(node->getRight(), child);
+    }
 }
 
 void Tree::deleteNode(int posID){
@@ -72,21 +109,104 @@ void Tree::deleteNode(int posID){
     }
 
     TreeNode *min;
+    TreeNode *temp;
 
+    //if anchor node
     if (this->anker->getNodePosID() == posID) {
-        min = findMinOfRightSubTree(this->anker);
-
-        if(min->getRight() == nullptr) {
-            min->setRight(this->anker->getRight());
-            min->setLeft(this->anker->getLeft());
-
-            delete(this->anker);
-
-
+        if(!this->anker->getLeft() && !this->anker->getRight()){
+            this->anker = nullptr;
+            return;
+        } else if(!this->anker->getRight()){
+            if(this->anker->getLeft()){
+                temp = this->anker->getLeft();
+                this->anker = temp;
+                return;
+            }
+            this->anker = nullptr;
         }
 
-    } else if() {
+        min = findMin(this->anker->getRight());
+        temp = findPreNode(this->anker, min);
 
+        if(min->getRight() != nullptr && temp != this->anker) {
+            temp->setLeft(min->getRight());
+        } else {
+            if(temp->getRight() == min) {
+                if(temp == this->anker)
+                    temp->setRight(min->getRight());
+                else
+                    temp->setRight(nullptr);
+            } else if(temp->getLeft() == min) {
+                temp->setLeft(nullptr);
+            }
+        }
+
+        min->setRight(this->anker->getRight());
+        min->setLeft(this->anker->getLeft());
+        this->anker = min;
+
+        return;
+    }
+
+    TreeNode *toDel = depthSearchByID(this->anker, posID);
+    TreeNode *pre = findPreNode(this->anker, toDel);
+
+    //if no child nodes
+    if(toDel->getRight() == nullptr && toDel->getLeft() == nullptr) {
+        if(pre->getLeft() == toDel) {
+            pre->setLeft(nullptr);
+        } else if(pre->getRight() == toDel) {
+            pre->setRight(nullptr);
+        }
+
+        toDel = nullptr;
+
+        return;
+    } else if (toDel->getRight() != nullptr && toDel->getLeft() != nullptr) { // if 2 child nodes
+        min = findMin(toDel->getRight());
+        temp = findPreNode(this->anker, min);
+
+        if(min->getRight() != nullptr) {
+            temp->setLeft(min->getRight());
+        } else {
+            if(temp->getRight() == min) {
+                temp->setRight(nullptr);
+            } else if(temp->getLeft() == min) {
+                temp->setLeft(nullptr);
+            }
+        }
+
+        if(pre->getRight() == toDel) {
+            pre->setRight(min);
+        } else if(pre->getLeft() == toDel) {
+            pre->setLeft(min);
+        }
+
+        min->setRight(toDel->getRight());
+        min->setLeft(toDel->getLeft());
+
+        toDel = nullptr;
+
+        return;
+    } else if (toDel->getRight() != nullptr || toDel->getLeft() != nullptr) { // if 1 child node
+
+
+        if(toDel->getLeft() != nullptr) {
+            if(pre->getLeft() == toDel) {
+                pre->setLeft(toDel->getLeft());
+            } else {
+                pre->setRight(toDel->getLeft());
+            }
+        } else if (toDel->getRight() != nullptr){
+            if(pre->getLeft() == toDel) {
+                pre->setLeft(toDel->getRight());
+            } else if (pre->getRight() == toDel) {
+                pre->setRight(toDel->getRight());
+            }
+        }
+
+        toDel = nullptr;
+        return;
     }
 }
 
@@ -128,8 +248,8 @@ void Tree::depthPrint(TreeNode *node) {
 }
 
 void Tree::printAll() {
-    std::cout << "ID | Name               | Alter | Einkommen |  PLZ  | Pos   " << std::endl;
-    std::cout << "---+--------------------+-------+-----------+-------+-------" << std::endl;
+    std::cout << "ID | Name               | Alter | Einkommen          | PLZ                | Pos                " << std::endl;
+    std::cout << "---+--------------------+-------+--------------------+--------------------+--------------------" << std::endl;
 
     depthPrint(this->anker);
 
