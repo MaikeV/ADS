@@ -8,27 +8,23 @@
 #include "TreeNode.h"
 #include "catch.h"
 
-using namespace std;
-
 class Tree{
 	
 	private: 
-		///////////////////////////////////////
-		// Ihr Code hier:	
-			
-
-
-		//
-		////////////////////////////////////	
-	
+		TreeNode *anker;
+		int NodeIDCounter;
 	public:
-		///////////////////////////////////////
-		// Ihr Code hier:	
-		
+		Tree(){
+		    this->anker = nullptr;
+		    this->NodeIDCounter = 0;
+		}
 
+		void addNode(std::string name, int age, double income, int plz);
+		void deleteNode(int posID);
+		bool searchNode(std::string name);
+		void printAll();
+		void depthPrint(TreeNode *node);
+		void depthSearch(TreeNode *node, std::string name);
 
-		//
-		////////////////////////////////////
-		// friend-Funktionen sind für die Tests erforderlich und müssen unangetastet bleiben! 
 		friend TreeNode * get_anker(Tree& TN);
 };

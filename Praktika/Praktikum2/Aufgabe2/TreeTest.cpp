@@ -4,7 +4,7 @@
 * Stand: 05.03.2019
 *
 *************************************************
-* Änderungen untersagt!
+* Aenderungen untersagt!
 *************************************************/
 #include "catch.h"
 #include "Tree.h"
@@ -22,7 +22,7 @@ TreeNode * get_anker(Tree& Tr) {
 /***********************************************
  * Testroutine des Baums:
  *  - Einfaches Hinzufuegen und Suchen
- *  - Loeschen in unterscheidlicher Ausprägung
+ *  - Loeschen in unterscheidlicher Ausprï¿½gung
  *  + Loeschen ohne Nachfolger
  *  + Loeschen mit einem Nachfolger
  *  + Loeschen mit zwei Nachfolger
@@ -168,14 +168,14 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		nTree->addNode("Mayer6", 25, 0, 0);
 		nTree->addNode("Mayer7", 26, 0, 0);
 
-		TreeNode * tnanker = get_anker(*nTree);  // Initiale Übergrabe des Ankers
+		TreeNode * tnanker = get_anker(*nTree);  // Initiale ï¿½bergrabe des Ankers
 
 		/*
-		Lösche den Baum schrittweise durch entfernen der Wurzel
+		Lï¿½sche den Baum schrittweise durch entfernen der Wurzel
 		*/
 		REQUIRE(tnanker->getNodePosID() == 20);
 		nTree->deleteNode(20);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 25);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 30);
@@ -183,7 +183,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()->getNodePosID() == 40);	
 
 		nTree->deleteNode(25);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 26);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 30);
@@ -191,7 +191,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()->getNodePosID() == 40);
 		
 		nTree->deleteNode(26);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 30);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 40);
@@ -199,7 +199,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight()== nullptr);
 
 		nTree->deleteNode(30);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 35);
 		REQUIRE(tnanker->getRight()->getNodePosID() == 40);
@@ -207,21 +207,21 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 		REQUIRE(tnanker->getRight()->getRight() == nullptr);
 	
 		nTree->deleteNode(35);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 40);
 		REQUIRE(tnanker->getRight() == nullptr);
 		REQUIRE(tnanker->getLeft()->getNodePosID() == 10);
 
 		nTree->deleteNode(40);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker->getNodePosID() == 10);
 		REQUIRE(tnanker->getRight() == nullptr);
 		REQUIRE(tnanker->getLeft() == nullptr);
 		
 		nTree->deleteNode(10);
-		tnanker = get_anker(*nTree); // Anker hat sich geändert, neue Übergabe erfoderlich
+		tnanker = get_anker(*nTree); // Anker hat sich geï¿½ndert, neue ï¿½bergabe erfoderlich
 
 		REQUIRE(tnanker == nullptr);		
 	}
@@ -245,7 +245,7 @@ TEST_CASE("Tree Testing", "[TREE]" ) {
 
 /***********************************************
  * Testroutine des Knotens:
- *  - Einfaches pruefen der Getter und Setter in Ausführung 
+ *  - Einfaches pruefen der Getter und Setter in Ausfï¿½hrung 
  */
 TEST_CASE("TreeNode Testing", "[TREENODE]" ) {
 		
@@ -256,8 +256,8 @@ TEST_CASE("TreeNode Testing", "[TREENODE]" ) {
 	SECTION("Getter von TreeNode - simple") {
 
 		REQUIRE(ref->getName() == "Scholl");
-		REQUIRE(ref->getAlter() == 20);
-		REQUIRE(ref->getEinkommen() == 0);
+		REQUIRE(ref->getAge() == 20);
+		REQUIRE(ref->getIncome() == 0);
 		REQUIRE(ref->getLeft() == nullptr);
 		REQUIRE(ref->getRight() == nullptr);
 		REQUIRE(ref->getNodeID() == 0);
@@ -267,11 +267,11 @@ TEST_CASE("TreeNode Testing", "[TREENODE]" ) {
 
 	SECTION("Setter von TreeNode - simple") {
 		
-		ref->setAlter(22);
-		REQUIRE(ref->getAlter() == 22);
+		ref->setAge(22);
+		REQUIRE(ref->getAge() == 22);
 
-		ref->setEinkommen(1000);
-		REQUIRE(ref->getEinkommen() == 1000);
+		ref->setIncome(1000);
+		REQUIRE(ref->getIncome() == 1000);
 		
 		ref->setLeft(nullptr);
 		REQUIRE(ref->getLeft() == nullptr);

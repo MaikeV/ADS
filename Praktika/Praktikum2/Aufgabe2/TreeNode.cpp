@@ -6,12 +6,22 @@
 #include "TreeNode.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
+void TreeNode::print() {
+    std::cout << std::setw(3) << this->getNodeID();
+    std::cout << "|";
+    std::cout << std::setw(20) << this->getName();
+    std::cout << "|";
+    std::cout << std::setw(7) << this->getAge();
+    std::cout << "|";
+    std::cout << std::setw(11) << this->getIncome();
+    std::cout << "|";
+    std::cout << std::setw(7) << this->getPLZ();
+    std::cout << "|";
+    std::cout << std::setw(7) << this->getNodePosID() << std::endl;
+}
 
-////////////////////////////////////
-// Ihr Code hier:
-
-
-
-//
-////////////////////////////////////
+double TreeNode::calcNodePosID(int age, int plz, double income) {
+    return age + plz + income;
+}

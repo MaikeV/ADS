@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Aufgabe2.dir/main.cpp.o CMakeFiles/Aufgabe2.dir/Tree.cpp.o CMakeFiles/Aufgabe2.dir/TreeNode.cpp.o CMakeFiles/Aufgabe2.dir/TreeTest.cpp.o  -o Aufgabe2 
