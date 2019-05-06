@@ -53,8 +53,67 @@ void Tree::addNode(std::string name, int age, double income, int plz){
     }
 }
 
-void Tree::deleteNode(int posID){
+TreeNode* Tree::findMinOfRightSubTree(TreeNode *node) {
 
+}
+
+TreeNode* Tree::depthSearchByID(TreeNode *node, int posID) {
+    if (node == nullptr) {
+        return nullptr;
+    }
+
+    if(node->getNodePosID() == )
+
+}
+
+void Tree::deleteNode(int posID){
+    if (this->anker == nullptr) {
+        return;
+    }
+
+    TreeNode *min;
+
+    if (this->anker->getNodePosID() == posID) {
+        min = findMinOfRightSubTree(this->anker);
+
+        if(min->getRight() == nullptr) {
+            min->setRight(this->anker->getRight());
+            min->setLeft(this->anker->getLeft());
+
+            delete(this->anker);
+
+
+        }
+
+    } else if() {
+
+    }
+}
+
+void Tree::depthSearchByName(TreeNode *node, std::string name, bool &found) {
+    if (node == nullptr) {
+        return;
+    }
+
+    if(node->getName() == name) {
+        std::cout << "NodeID: " << node->getNodeID() << ", Name: " << node->getName() << ", Alter: " << node->getAge() << ", Einkommen: " << node->getIncome() << ", PLZ: " << node->getPLZ() << ", PosID: " << node->getNodePosID() << std::endl;
+        found = true;
+    }
+
+    depthSearchByName(node->getLeft(), name, found);
+    depthSearchByName(node->getRight(), name, found);
+}
+
+bool Tree::searchNode(std::string name){
+    if(this->anker == nullptr) {
+        return false;
+    }
+
+    bool found = false;
+
+    depthSearchByName(this->anker, name, found);
+
+    return found;
 }
 
 void Tree::depthPrint(TreeNode *node) {
@@ -66,32 +125,6 @@ void Tree::depthPrint(TreeNode *node) {
 
     depthPrint(node->getLeft());
     depthPrint(node->getRight());
-}
-
-void Tree::depthSearch(TreeNode *node, std::string name, bool &found) {
-    if (node == nullptr) {
-        return;
-    }
-
-    if(node->getName() == name) {
-        std::cout << "NodeID: " << node->getNodeID() << ", Name: " << node->getName() << ", Alter: " << node->getAge() << ", Einkommen: " << node->getIncome() << ", PLZ: " << node->getPLZ() << ", PosID: " << node->getNodePosID() << std::endl;
-        found = true;
-    }
-
-    depthSearch(node->getLeft(), name, found);
-    depthSearch(node->getRight(), name, found);
-}
-
-bool Tree::searchNode(std::string name){
-    if(this->anker == nullptr) {
-        return false;
-    }
-
-    bool found = false;
-
-    depthSearch(this->anker, name, found);
-
-    return found;
 }
 
 void Tree::printAll() {

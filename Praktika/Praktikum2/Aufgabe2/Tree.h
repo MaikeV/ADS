@@ -24,7 +24,9 @@ class Tree{
 		bool searchNode(std::string name);
 		void printAll();
 		void depthPrint(TreeNode *node);
-		void depthSearch(TreeNode *node, std::string name, bool &found);
+		void depthSearchByName(TreeNode *node, std::string name, bool &found);
+		TreeNode* depthSearchByID(TreeNode *node, int posID);
+		TreeNode* findMinOfRightSubTree(TreeNode *node);
 
 		friend TreeNode * get_anker(Tree& TN);
 };

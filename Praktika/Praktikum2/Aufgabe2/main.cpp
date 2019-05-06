@@ -10,7 +10,7 @@
 
 
 int main() {
-	//int result = Catch::Session().run();
+	int result = Catch::Session().run();
 
 	char answer = 0;
 	std::string name;
