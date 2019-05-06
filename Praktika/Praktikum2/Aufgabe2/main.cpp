@@ -81,10 +81,13 @@ int main() {
 	            std::cout << "Name ?> ";
 	            std::cin >> name;
 
+                std::cout << "+ Fundstellen: " << std::endl;
 
-	            std::cout << "+ Fundstellen: " << std::endl;
-	            //Schleife:
-	            std::cout << "NodeID: " << "" << ", Name: " << "" << ", Alter: " << "" << ", Einkommen: " << "" << ", PLZ: " << "" << ", PosID: " << "" << std::endl;
+	            if(!tree.searchNode(name)) {
+	                std::cout << "Keine." << std::endl << std::endl;
+	            }
+
+	            std::cout << std::endl;
 	            break;
 	        case '5':
                 tree.printAll();

@@ -68,17 +68,18 @@ void Tree::depthPrint(TreeNode *node) {
     depthPrint(node->getRight());
 }
 
-void Tree::depthSearch(TreeNode *node, std::string name) {
+void Tree::depthSearch(TreeNode *node, std::string name, bool &found) {
     if (node == nullptr) {
         return;
     }
 
     if(node->getName() == name) {
-        node->print();
+        std::cout << "NodeID: " << node->getNodeID() << ", Name: " << node->getName() << ", Alter: " << node->getAge() << ", Einkommen: " << node->getIncome() << ", PLZ: " << node->getPLZ() << ", PosID: " << node->getNodePosID() << std::endl;
+        found = true;
     }
 
-    depthSearch(node->getLeft(), name);
-    depthSearch(node->getRight(), name);
+    depthSearch(node->getLeft(), name, found);
+    depthSearch(node->getRight(), name, found);
 }
 
 bool Tree::searchNode(std::string name){
@@ -86,7 +87,11 @@ bool Tree::searchNode(std::string name){
         return false;
     }
 
-    depthSearch(this->anker);
+    bool found = false;
+
+    depthSearch(this->anker, name, found);
+
+    return found;
 }
 
 void Tree::printAll() {

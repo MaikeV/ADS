@@ -24,7 +24,7 @@ class Tree{
 		bool searchNode(std::string name);
 		void printAll();
 		void depthPrint(TreeNode *node);
-		void depthSearch(TreeNode *node, std::string name);
+		void depthSearch(TreeNode *node, std::string name, bool &found);
 
 		friend TreeNode * get_anker(Tree& TN);
 };
