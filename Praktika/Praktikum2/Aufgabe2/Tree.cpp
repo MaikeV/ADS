@@ -10,19 +10,27 @@
 #include <fstream>
 
 void Tree::readFromCsv() {
-    std::ifstream file("ExportZielanalyse.csv");
+    std::ifstream file("/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/ExportZielanalyse.csv");
 
     std::string line;
-    std::string name;
-    int age;
-    int plz;
-    double income;
+    std::string str[4];
 
     //name;age;income;plz
 
     while(std::getline(file, line)) {
-        name = line.substr(0, line.find(';'));
-        
+        int j = 0;
+        int last = -1;
+        for(int i = 0; i < line.size(); i++) {
+            if(line.at(i) == ';') {
+                str[j] = line.substr(last + 1, i - last - 1);
+
+                j++;
+                last = i;
+            }
+        }
+        str[j] = line.substr(last + 1, line.size() - last - 1);
+
+        this->addNode(str[0], std::stoi(str[1]), std::stod(str[2]), std::stoi(str[3]));
     }
 }
 

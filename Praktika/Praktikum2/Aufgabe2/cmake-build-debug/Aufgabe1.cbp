@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/ExportZielanalyse.csv">
+			<Option target="Aufgabe2"/>
+		</Unit>
 		<Unit filename="/home/mauske/Studium/ADS/ADS/Praktika/Praktikum2/Aufgabe2/Tree.cpp">
 			<Option target="Aufgabe2"/>
 		</Unit>
