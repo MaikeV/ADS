@@ -83,7 +83,7 @@ void Ring::addNode(std::string descr, std::string data) {
 
         this->numberOfNodes++;
     }
-    std::cout << "Hier: " << this->anker->getData();
+    //std::cout << "Hier: " << this->anker->getData();
 }
 
 bool Ring::search(std::string data){
@@ -91,9 +91,15 @@ bool Ring::search(std::string data){
 
     while(ptr->getNext() != this->anker) {
         if(ptr->getData() == data) {
+            std::cout << "OldAge: " << ptr->getAge() << ", Beschreibung: " << ptr->getDescription() << ", Daten: " << ptr->getData() << std::endl << std::endl;
             return true;
         }
         ptr = ptr->getNext();
+    }
+
+    if(ptr->getData() == data) {
+        std::cout << "OldAge: " << ptr->getAge() << ", Beschreibung: " << ptr->getDescription() << ", Daten: " << ptr->getData() << std::endl << std::endl;
+        return true;
     }
 
     return false;
