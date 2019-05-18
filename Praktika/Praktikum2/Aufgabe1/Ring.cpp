@@ -27,10 +27,6 @@ int Ring::size() {
     return counter + 1;
 }
 
-void findInsPlace() {
-
-}
-
 void Ring::incrementAge(){
     RingNode *node = this->anker;
     do{
@@ -46,7 +42,6 @@ RingNode* Ring::getNodeByAge(int age){
         ptr = ptr->getNext();
     return ptr;
 }
-
 
 void Ring::addNode(std::string descr, std::string data) {
     RingNode *newNode = new RingNode;

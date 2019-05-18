@@ -197,8 +197,6 @@ void Tree::deleteNode(int posID){
 
         return;
     } else if (toDel->getRight() != nullptr || toDel->getLeft() != nullptr) { // if 1 child node
-
-
         if(toDel->getLeft() != nullptr) {
             if(pre->getLeft() == toDel) {
                 pre->setLeft(toDel->getLeft());
