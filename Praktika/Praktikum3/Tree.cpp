@@ -84,22 +84,24 @@ void Tree::addNode(std::string name, int age, double income, int plz){
         uncle = grandparent->getRight();
     }
 
-    if(parent->getRed() && uncle->getRed()) {
-        uncle->setRed(false);
-        parent->setRed(false);
+    if(parent->getRed() && uncle != nullptr) {
+        if(uncle->getRed()) {
+            uncle->setRed(false);
+            parent->setRed(false);
 
-        if(grandparent != this->anker) {
-            grandparent->setRed(true);
+            if(grandparent != this->anker) {
+                grandparent->setRed(true);
+            }
         }
-    } else if (parent->getRed() && !uncle->getRed()) {
+    } else if (parent->getRed()) {
         if(parent->getRight() == newNode && grandparent->getLeft() == parent) {
             rotateTreeLeft(parent, newNode);
-            rotateTreeRight(grandparent, parent);
+            rotateTreeRight(grandparent, newNode);
         } else if(parent->getLeft() == newNode && grandparent->getLeft() == parent) {
             rotateTreeRight(grandparent, parent);
         } else if(parent->getLeft() == newNode && grandparent->getRight() == parent) {
             rotateTreeRight(parent, newNode);
-            rotateTreeLeft(grandparent, parent);
+            rotateTreeLeft(grandparent, newNode);
         } else if(parent->getRight() == newNode && grandparent->getRight() == parent) {
             rotateTreeLeft(grandparent, parent);
         }
@@ -117,6 +119,8 @@ bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
         }
 
         nodeB->setLeft(nodeA);
+        nodeB->setRed(false);
+        nodeA->setRed(true);
 
         return true;
     } else {
@@ -133,6 +137,8 @@ bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
         }
 
         nodeB->setLeft(nodeA);
+        nodeB->setRed(false);
+        nodeA->setRed(true);
 
         return true;
     }
@@ -151,6 +157,8 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
         }
 
         nodeB->setRight(nodeA);
+        nodeB->setRed(false);
+        nodeA->setRed(true);
 
         return true;
     } else {
@@ -167,6 +175,8 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
         }
 
         nodeB->setRight(nodeA);
+        nodeB->setRed(false);
+        nodeA->setRed(true);
 
         return true;
     }
