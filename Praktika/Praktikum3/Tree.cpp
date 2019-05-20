@@ -46,7 +46,7 @@ void addAtPos(TreeNode *newNode, TreeNode *childNode) {
 }
 
 void Tree::addNode(std::string name, int age, double income, int plz){
-    TreeNode *newNode = new TreeNode(age + income + plz, this->NodeIDCounter++, name, age, income, plz, true);
+    TreeNode *newNode = new TreeNode(age + income*0.001 + plz, this->NodeIDCounter++, name, age, income, plz, true);
     newNode->setLeft(nullptr);
     newNode->setRight(nullptr);
 
@@ -162,13 +162,13 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
     TreeNode *nodeC = nodeB->getLeft();
 
     if(nodeA == this->anker) {
-        this->anker = nodeB;
-
         if(nodeB->getRight() != nullptr) {
             nodeA->setLeft(nodeB->getRight());
         } else {
             nodeA->setLeft(nullptr);
         }
+
+        this->anker = nodeB;
 
         nodeB->setRight(nodeA);
         nodeB->setRed(false);
@@ -231,7 +231,7 @@ bool Tree::balanceTree() {
         }
     } while(node != nullptr);
 
-    return false;
+    return true;
 }
 
 int Tree::getBlackHeight(TreeNode *start, int counter) {
