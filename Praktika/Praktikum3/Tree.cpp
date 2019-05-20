@@ -106,6 +106,8 @@ void Tree::addNode(std::string name, int age, double income, int plz){
             rotateTreeLeft(grandparent, parent);
         }
     }
+
+    balanceTree();
 }
 
 bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
@@ -116,6 +118,8 @@ bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
 
         if(nodeB->getLeft() != nullptr) {
             nodeA->setRight(nodeB->getLeft());
+        } else {
+            nodeA->setRight(nullptr);
         }
 
         nodeB->setLeft(nodeA);
@@ -134,6 +138,8 @@ bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
 
         if (nodeB->getLeft() != nullptr) {
             nodeA->setRight(nodeB->getLeft());
+        } else {
+            nodeA->setRight(nullptr);
         }
 
         nodeB->setLeft(nodeA);
@@ -154,6 +160,8 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
 
         if(nodeB->getRight() != nullptr) {
             nodeA->setLeft(nodeB->getRight());
+        } else {
+            nodeA->setLeft(nullptr);
         }
 
         nodeB->setRight(nodeA);
@@ -172,6 +180,8 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
 
         if(nodeB->getRight() != nullptr) {
             nodeA->setLeft(nodeB->getRight());
+        } else {
+            nodeA->setLeft(nullptr);
         }
 
         nodeB->setRight(nodeA);
@@ -184,10 +194,42 @@ bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
     return false;
 }
 
-bool Tree::balanceTree() {
+TreeNode* Tree::checkForTwoRed(TreeNode *start) {
+    if(start == nullptr){
+        return nullptr;
+    } else if(start->getRed() && start->getRight() != nullptr) {
+        if(start->getRight()->getRed())     return start->getRight();
+    } else if(start->getRed() && start->getLeft() != nullptr) {
+        if(start->getLeft()->getRed())      return start->getLeft();
+    }
 
+    checkForTwoRed(start->getLeft());
+    checkForTwoRed(start->getRight());
+}
+
+bool Tree::balanceTree() {
+    TreeNode *node = nullptr;
+    TreeNode *parent = nullptr;
+
+    do {
+        node = checkForTwoRed(this->anker);
+
+        if(node != nullptr && node != this->anker) {
+            parent = findPreNode(this->anker, node);
+
+            if(parent->getLeft() == node) {
+                rotateTreeRight(parent, node);
+            } else {
+                rotateTreeLeft(parent, node);
+            }
+        }
+    } while(node != nullptr);
 
     return false;
+}
+
+int Tree::getBlackHeight(TreeNode *start, int counter) {
+
 }
 
 TreeNode* Tree::findMin(TreeNode *node) {
