@@ -75,6 +75,12 @@ void Tree::addNode(std::string name, int age, double income, int plz){
     }
 
     TreeNode *parent = findPreNode(this->anker, newNode);
+
+    if(parent == this->anker) {
+        parent->getRight()->setRed(false);
+        parent->getLeft()->setRed(false);
+        return;
+    }
     TreeNode *grandparent = findPreNode(this->anker, parent);
     TreeNode *uncle = nullptr;
 
