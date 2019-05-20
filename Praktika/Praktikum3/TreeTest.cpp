@@ -246,7 +246,7 @@ TEST_CASE("TreeNode Testing", "[TREENODE]" ) {
 		REQUIRE(ref->getIncome() == 0);
 		REQUIRE(ref->getLeft() == nullptr);
 		REQUIRE(ref->getRight() == nullptr);
-		REQUIRE(ref->getNodeID() == 1);
+		REQUIRE(ref->getNodeID() == 0);
 		REQUIRE(ref->getNodePosID() == 20);
 		REQUIRE(ref->getPLZ() == 0);
 	}

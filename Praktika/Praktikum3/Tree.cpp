@@ -61,20 +61,48 @@ void Tree::addNode(std::string name, int age, double income, int plz){
             addAtPos(newNode, this->anker->getLeft());
         } else {
             this->anker->setLeft(newNode);
-            //checkForColorChange();
             return;
         }
     } else if(newNode->getNodePosID() > this->anker->getNodePosID()) {
         if(this->anker->getRight() != nullptr) {
             addAtPos(newNode, this->anker->getRight());
-            //checkForColorChange();
         } else {
             this->anker->setRight(newNode);
-            //checkForColorChange();
             return;
         }
     } else {
         return;
+    }
+
+    TreeNode *parent = findPreNode(this->anker, newNode);
+    TreeNode *grandparent = findPreNode(this->anker, parent);
+    TreeNode *uncle = nullptr;
+
+    if(grandparent->getRight() == parent) {
+        uncle = grandparent->getLeft();
+    } else {
+        uncle = grandparent->getRight();
+    }
+
+    if(parent->getRed() && uncle->getRed()) {
+        uncle->setRed(false);
+        parent->setRed(false);
+
+        if(grandparent != this->anker) {
+            grandparent->setRed(true);
+        }
+    } else if (parent->getRed() && !uncle->getRed()) {
+        if(parent->getRight() == newNode && grandparent->getLeft() == parent) {
+            rotateTreeLeft(parent, newNode);
+            rotateTreeRight(grandparent, parent);
+        } else if(parent->getLeft() == newNode && grandparent->getLeft() == parent) {
+            rotateTreeRight(grandparent, parent);
+        } else if(parent->getLeft() == newNode && grandparent->getRight() == parent) {
+            rotateTreeRight(parent, newNode);
+            rotateTreeLeft(grandparent, parent);
+        } else if(parent->getRight() == newNode && grandparent->getRight() == parent) {
+            rotateTreeLeft(grandparent, parent);
+        }
     }
 }
 
@@ -113,21 +141,43 @@ bool Tree::rotateTreeLeft(TreeNode *nodeA, TreeNode *nodeB) {
 }
 
 bool Tree::rotateTreeRight(TreeNode *nodeA, TreeNode *nodeB) {
+    TreeNode *nodeC = nodeB->getLeft();
 
+    if(nodeA == this->anker) {
+        this->anker = nodeB;
+
+        if(nodeB->getRight() != nullptr) {
+            nodeA->setLeft(nodeB->getRight());
+        }
+
+        nodeB->setRight(nodeA);
+
+        return true;
+    } else {
+        TreeNode *parent = findPreNode(this->anker, nodeA);
+
+        if(parent->getLeft() == nodeA) {
+            parent->setLeft(nodeB);
+        } else {
+            parent->setRight(nodeB);
+        }
+
+        if(nodeB->getRight() != nullptr) {
+            nodeA->setLeft(nodeB->getRight());
+        }
+
+        nodeB->setRight(nodeA);
+
+        return true;
+    }
 
     return false;
 }
 
 bool Tree::balanceTree() {
-    return false;
-}
 
-void Tree::checkForColorChange(TreeNode *node) {
-    if(node->getLeft()->getRed() && node->getRight()->getRed() && node != this->anker) {
-        node->setRed(true);
-        node->getRight()->setRed(false);
-        node->getLeft()->setRed(false);
-    }
+
+    return false;
 }
 
 TreeNode* Tree::findMin(TreeNode *node) {
@@ -186,14 +236,6 @@ bool Tree::searchNode(std::string name){
     depthSearchByName(this->anker, name, found);
 
     return found;
-}
-
-void Tree::levelPrint(TreeNode *node) {
-    if(node == nullptr) {
-        return;
-    }
-
-    node->print();
 }
 
 void Tree::printAll() {

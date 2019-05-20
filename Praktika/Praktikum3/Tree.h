@@ -20,7 +20,6 @@ public:
     void addNode(std::string name, int age, double income, int plz);
     bool searchNode(std::string name);
     void printAll();
-    void levelPrint(TreeNode *node);
     void depthSearchByName(TreeNode *node, std::string name, bool &found);
     TreeNode* depthSearchByID(TreeNode *node, int posID);
     TreeNode* findMin(TreeNode *node);
@@ -28,8 +27,6 @@ public:
     void readFromCsv();
     void printLevelOrder();
     bool balanceTree();
-    void checkForColorChange(TreeNode *node);
-
 
     friend TreeNode * get_anker(Tree& TN);
 };
