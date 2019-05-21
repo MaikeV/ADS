@@ -64,7 +64,7 @@ void Tree::addNode(std::string name, int age, double income, int plz){
             return;
         }
     } else if(newNode->getNodePosID() > this->anker->getNodePosID()) {
-        if(this->anker->getRight() != nullptr) {
+    if(this->anker->getRight() != nullptr) {
             addAtPos(newNode, this->anker->getRight());
         } else {
             this->anker->setRight(newNode);
@@ -303,6 +303,8 @@ void Tree::printAll() {
 void Tree::printLevelOrder() {
     std::cout << "ID | Name               | Alter | Einkommen          | PLZ                | Pos                | Red      " << std::endl;
     std::cout << "---+--------------------+-------+--------------------+--------------------+--------------------+----------" << std::endl;
+
+    if(this->anker == nullptr) return;
 
     TreeNode *ptr = 0;
 
