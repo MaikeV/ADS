@@ -32,6 +32,18 @@ catch.h
 string
 -
 
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/TreeTest.cpp
+catch.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/catch.h
+Tree.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/Tree.h
+TreeNode.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/TreeNode.h
+string
+-
+iostream
+-
+
 /home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/catch.h
 TargetConditionals.h
 -
@@ -471,4 +483,12 @@ algorithm
 -
 cassert
 -
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/main.cpp
+iostream
+-
+Tree.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/Tree.h
+catch.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum3/catch.h
 

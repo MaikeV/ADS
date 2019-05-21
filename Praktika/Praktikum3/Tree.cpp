@@ -46,7 +46,7 @@ void addAtPos(TreeNode *newNode, TreeNode *childNode) {
 }
 
 void Tree::addNode(std::string name, int age, double income, int plz){
-    TreeNode *newNode = new TreeNode(age + income*0.001 + plz, this->NodeIDCounter++, name, age, income, plz, true);
+    TreeNode *newNode = new TreeNode(age + income*0.001 + plz*0.001, this->NodeIDCounter++, name, age, income, plz, true);
     newNode->setLeft(nullptr);
     newNode->setRight(nullptr);
 
@@ -234,10 +234,6 @@ bool Tree::balanceTree() {
     return true;
 }
 
-int Tree::getBlackHeight(TreeNode *start, int counter) {
-
-}
-
 TreeNode* Tree::findMin(TreeNode *node) {
     if(node->getLeft() == nullptr) {
         return node;
@@ -296,8 +292,28 @@ bool Tree::searchNode(std::string name){
     return found;
 }
 
+//void Tree::printAll() {
+//    printLevelOrder();
+//}
+
+void Tree::depthPrint(TreeNode *node) {
+    if(node == nullptr) {
+        return;
+    }
+
+    node->print();
+
+    depthPrint(node->getLeft());
+    depthPrint(node->getRight());
+}
+
 void Tree::printAll() {
-    printLevelOrder();
+    std::cout << "ID | Name               | Alter | Einkommen          | PLZ                | Pos                | Red      " << std::endl;
+    std::cout << "---+--------------------+-------+--------------------+--------------------+--------------------+----------" << std::endl;
+
+    depthPrint(this->anker);
+
+    std::cout << std::endl;
 }
 
 void Tree::printLevelOrder() {

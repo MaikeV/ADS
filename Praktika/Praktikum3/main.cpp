@@ -24,8 +24,9 @@ int main() {
         std::cout << "2) Datensatz einfuegen, csv" << std::endl;
         std::cout << "3) Datensatz loeschen" << std::endl;
         std::cout << "4) Suchen" << std::endl;
-        std::cout << "5) Datenstruktur anzeigen" << std::endl;
-        std::cout << "6) Programm beenden" << std::endl;
+        std::cout << "5) Ausgabe in Preorder" << std::endl;
+        std::cout << "6) Ausgabe in LevelOrder" << std::endl;
+        std::cout << "7) Programm beenden" << std::endl;
         std::cout << "?> ";
         std::cin >> answer;
 
@@ -85,6 +86,9 @@ int main() {
                 tree.printAll();
                 break;
             case '6':
+                tree.printLevelOrder();
+                break;
+            case '7':
                 break;
             default:
                 std::cout << "+ Ungueltige Eingabe, bitte versuchen Sie es erneut." << std::endl << std::endl;

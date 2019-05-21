@@ -27,7 +27,8 @@ public:
     void readFromCsv();
     void printLevelOrder();
     bool balanceTree();
-    int getBlackHeight(TreeNode *start, int counter);
+    void depthPrint(TreeNode *node);
+
     TreeNode* checkForTwoRed(TreeNode *start);
 
     friend TreeNode * get_anker(Tree& TN);
