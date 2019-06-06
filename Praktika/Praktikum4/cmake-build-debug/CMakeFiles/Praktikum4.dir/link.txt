@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Praktikum4.dir/main.cpp.o CMakeFiles/Praktikum4.dir/hashtable.cpp.o CMakeFiles/Praktikum4.dir/sorting.cpp.o CMakeFiles/Praktikum4.dir/unit_tests.cpp.o  -o Praktikum4 

@@ -19,7 +19,7 @@ int main() {
     std::cout << "Person Analyzer v19.84, by George Orwell" << std::endl;
     std::cout << "========================================" << std::endl;
 
-    while(answer != '6') {
+    while(answer != '7') {
         std::cout << "1) Datensatz einfuegen, manuell" << std::endl;
         std::cout << "2) Datensatz einfuegen, csv" << std::endl;
         std::cout << "3) Datensatz loeschen" << std::endl;

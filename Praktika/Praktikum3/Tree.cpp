@@ -311,6 +311,8 @@ void Tree::printAll() {
     std::cout << "ID | Name               | Alter | Einkommen          | PLZ                | Pos                | Red      " << std::endl;
     std::cout << "---+--------------------+-------+--------------------+--------------------+--------------------+----------" << std::endl;
 
+    if(this->anker == nullptr) return;
+
     depthPrint(this->anker);
 
     std::cout << std::endl;
