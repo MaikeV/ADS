@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-for fname in ('quicksort.txt', 'heapsort.txt', 'mergesort.txt', 'shellsort.txt' ):
+for fname in ('quicksort.txt', 'heapsort.txt', 'mergesort.txt.txt', 'shellsort.txt' ):
     data=np.loadtxt(fname)
     X=data[:,1]
     Y=data[:,2]

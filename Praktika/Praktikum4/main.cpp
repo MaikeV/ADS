@@ -18,19 +18,27 @@ void benchmark_mergesort();
 int main(int argc, char** argv) {
 
   Catch::Session().run();
-  std::cin.get();
+//  std::cin.get();
 
-  benchmark_quicksort();
-  benchmark_heapsort();
-  benchmark_mergesort();
-  benchmark_shellsort();
+    HashTable testTable(1000);
+
+    for(int i = 0; i < 200; i++) {
+        testTable.insert(rand() % 1500 + 1000);
+    }
+
+    std::cout << "Kollisionen: " << testTable.getCollisionCount() << std::endl;
+
+//    benchmark_quicksort();
+//    benchmark_heapsort();
+//    benchmark_mergesort();
+//    benchmark_shellsort();
 }
 
 //executes benchmark for quicksort
 void benchmark_quicksort() {
   //file stream
   std::ofstream quicksort_measurement;
-  quicksort_measurement.open("/home/Studium/ADS/ADS/Praktika/Praktikum4/files/quicksort.txt", std::ios::out | std::ios::in | std::ios::app);
+  quicksort_measurement.open("/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/files/quicksort.txt", std::ios::out | std::ios::app);
 
   //benchmark parameters / variables
   double dtime;
@@ -70,7 +78,7 @@ void benchmark_quicksort() {
 void benchmark_mergesort() {
     //file stream
     std::ofstream mergesort_measurement;
-    mergesort_measurement.open("/home/Studium/ADS/ADS/Praktika/Praktikum4/files/mergesort.txt", std::ios::out | std::ios::in | std::ios::app);
+    mergesort_measurement.open("/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/files/mergesort.txt", std::ios::out | std::ios::app);
 
     //benchmark parameters / variables
     double dtime;
@@ -83,7 +91,7 @@ void benchmark_mergesort() {
     //actual benchmark loop
     for (int n = n_start; n<=n_end; n += n_step) {
         //"progress bar"
-        std::cout << "Running Quicksort with n: " << n << std::endl;
+        std::cout << "Running Mergesort with n: " << n << std::endl;
 
         //generate n random integers
         sorting::randomizeVector(V, n);
@@ -93,7 +101,7 @@ void benchmark_mergesort() {
         auto start = std::chrono::steady_clock::now();
 
         //execzute sorting algorithm
-        sorting::QuickSort(V,0,V.size()-1);
+        sorting::MergeSort(V, V, 0, V.size()-1);
 
         //stop time
         //dtime = omp_get_wtime() - dtime;
@@ -110,7 +118,7 @@ void benchmark_mergesort() {
 void benchmark_heapsort() {
     //file stream
     std::ofstream heapsort_measurement;
-    heapsort_measurement.open("/home/Studium/ADS/ADS/Praktika/Praktikum4/files/heapsort.txt", std::ios::out | std::ios::in | std::ios::app);
+    heapsort_measurement.open("/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/files/heapsort.txt", std::ios::out | std::ios::app);
 
     //benchmark parameters / variables
     double dtime;
@@ -123,7 +131,7 @@ void benchmark_heapsort() {
     //actual benchmark loop
     for (int n = n_start; n<=n_end; n += n_step) {
         //"progress bar"
-        std::cout << "Running Quicksort with n: " << n << std::endl;
+        std::cout << "Running Heapsort with n: " << n << std::endl;
 
         //generate n random integers
         sorting::randomizeVector(V, n);
@@ -133,7 +141,7 @@ void benchmark_heapsort() {
         auto start = std::chrono::steady_clock::now();
 
         //execzute sorting algorithm
-        sorting::QuickSort(V,0,V.size()-1);
+        sorting::HeapSort(V, V.size()-1);
 
         //stop time
         //dtime = omp_get_wtime() - dtime;
@@ -150,7 +158,7 @@ void benchmark_heapsort() {
 void benchmark_shellsort() {
     //file stream
     std::ofstream shellsort_measurement;
-    shellsort_measurement.open("/home/Studium/ADS/ADS/Praktika/Praktikum4/files/shellsort.txt", std::ios::out | std::ios::in | std::ios::app);
+    shellsort_measurement.open("/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/files/shellsort.txt", std::ios::out | std::ios::app);
 
     //benchmark parameters / variables
     double dtime;
@@ -163,7 +171,7 @@ void benchmark_shellsort() {
     //actual benchmark loop
     for (int n = n_start; n<=n_end; n += n_step) {
         //"progress bar"
-        std::cout << "Running Quicksort with n: " << n << std::endl;
+        std::cout << "Running Shellsort with n: " << n << std::endl;
 
         //generate n random integers
         sorting::randomizeVector(V, n);
@@ -173,7 +181,7 @@ void benchmark_shellsort() {
         auto start = std::chrono::steady_clock::now();
 
         //execzute sorting algorithm
-        sorting::QuickSort(V,0,V.size()-1);
+        sorting::ShellSort(V, V.size()-1);
 
         //stop time
         //dtime = omp_get_wtime() - dtime;
