@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/hashtable.cpp
+hashtable.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/hashtable.h
+iostream
+-
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum4/hashtable.h
+vector
+-
+

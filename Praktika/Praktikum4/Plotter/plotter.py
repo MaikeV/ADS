@@ -1,5 +1,10 @@
+import numpy as np
 import matplotlib.pyplot as plt
 
-plt.plot("/home/Studium/ADS/Praktika/Praktikum4/data.txt")
-
+for fname in ('quicksort.txt', 'heapsort.txt', 'mergesort.txt', 'shellsort.txt' ):
+    data=np.loadtxt(fname)
+    X=data[:,1]
+    Y=data[:,2]
+    plt.plot(X,Y,':ro')
+plt.ylim((0,55000))
 plt.show()

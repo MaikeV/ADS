@@ -1,43 +1,43 @@
 #include "hashtable.h"
 #include <iostream>
 
-using namespace std;
-
 HashTable::HashTable(int size) {
-	
-	//*****************************
-	// implement constructor here *
-	//*****************************
-
+    this->size = size;
+    this->collisionCount = 0;
+    this->elements = 0;
+    this->hashTable = new std::vector<int>(size, -1);
 }
 
-HashTable::~HashTable()
-{
-	//****************************
-	// implement destructor here *
-	//****************************
+HashTable::~HashTable() {
+    delete this->hashTable;
 }
 
 int HashTable::hashValue(int item) {
-	
-	int index = -1; //dummy initializtation
+    int index = 0;
+    int i = 1;
 
-	//******************************************
-	// implement calculation of hashindex here *
-	//******************************************
+	index = item % this->size;
+
+    while(this->hashTable->at(index) != -1 && this->elements < this->size) {
+        this->collisionCount++;
+        index = (item + i * i) % this->size;
+
+        i++;
+    }
 
 	return index;
 }
 
 int HashTable::insert(int item) {
-	
-	//******************************************
-	// implement insertion of new element here *
-	//******************************************
+    int hashindex = hashValue(item);
+
+	if(this->hashTable->at(hashindex) == -1) {
+        this->hashTable->at(hashindex) = item;
+	    this->elements++;
+	}
 
 	return 0; //dummy return
 }
-
 
 int HashTable::at(int i) {
 	return hashTable->at(i);
