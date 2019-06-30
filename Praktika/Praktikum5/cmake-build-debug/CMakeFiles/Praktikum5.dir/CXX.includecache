@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum5/Graph.cpp
+fstream
+-
+iostream
+-
+sstream
+-
+Graph.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum5/Graph.h
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum5/Graph.h
+GraphNode.h
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum5/GraphNode.h
+vector
+-
+string
+-
+
+/home/mauske/Studium/ADS/ADS/Praktika/Praktikum5/GraphNode.h
+vector
+-
+

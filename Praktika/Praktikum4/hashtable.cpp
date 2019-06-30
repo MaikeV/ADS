@@ -34,9 +34,11 @@ int HashTable::insert(int item) {
 	if(this->hashTable->at(hashindex) == -1) {
         this->hashTable->at(hashindex) = item;
 	    this->elements++;
+
+	    return 0;
 	}
 
-	return 0; //dummy return
+	return -1;
 }
 
 int HashTable::at(int i) {

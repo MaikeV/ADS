@@ -21,9 +21,12 @@ int main(int argc, char** argv) {
 //  std::cin.get();
 
     HashTable testTable(1000);
+    srand(time(NULL));
 
     for(int i = 0; i < 200; i++) {
-        testTable.insert(rand() % 1500 + 1000);
+        int random = (rand() % (1500 - 1000) + 1000);
+        testTable.insert(random);
+        std::cout << random << std::endl;
     }
 
     std::cout << "Kollisionen: " << testTable.getCollisionCount() << std::endl;

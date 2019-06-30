@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Praktikum5.dir/main.cpp.o CMakeFiles/Praktikum5.dir/Graph.cpp.o CMakeFiles/Praktikum5.dir/GraphNode.cpp.o CMakeFiles/Praktikum5.dir/P5_graphTest.cpp.o  -o Praktikum5 
