@@ -15,6 +15,9 @@ private:
     bool ger;
     bool gew;
     std::vector<GraphNode*> nodes;
+    std::vector<GraphNode::edge> edges;
+
+private:
 
     GraphNode* getNodeByKey(int key);
     void setAllUnvisited();

@@ -10,6 +10,7 @@
 class GraphNode {
 public:
     struct edge {
+        GraphNode *startNode;
         GraphNode *endNode;
         int weight;
 
@@ -71,6 +72,8 @@ public:
     void setComponent(int component) {
         GraphNode::component = component;
     }
+
+    bool connectedTo(GraphNode *node);
 
 private:
     int key;

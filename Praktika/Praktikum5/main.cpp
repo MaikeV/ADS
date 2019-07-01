@@ -82,9 +82,11 @@ int main() {
                 std::cout << "Prim: " << graph.prim(start) << std::endl << std::endl;
                 break;
             case '5':
-
+                std::cout << "Kruskal: " << graph.kruskal() << std::endl << std::endl;
+                break;
             case '6':
                 graph.printAll();
+                break;
             case '0':
                 break;
             default:

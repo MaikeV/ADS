@@ -78,12 +78,15 @@ bool Graph::init(std::string filepath) {
                         GraphNode::edge there;
                         GraphNode::edge andBackAgain;
 
+                        there.startNode = this->nodes[i];
                         there.endNode = endNode;
                         there.weight = weight;
 
+                        andBackAgain.startNode = endNode;
                         andBackAgain.endNode = this->nodes[i];
                         andBackAgain.weight = weight;
 
+                        this->edges.push_back(there);
                         this->nodes[i]->addEdge(there);
                         endNode->addEdge(andBackAgain);
                         break;
@@ -203,7 +206,7 @@ double Graph::prim(int startKey) {
             pq.push(node->getEdge(i));
 
 //    visitNode(node, pq);
-//
+
     while(!pq.empty()) {
         node->setVisited(true);
 
@@ -241,14 +244,36 @@ double Graph::prim(int startKey) {
 }
 
 double Graph::kruskal() {
-    return 0;
-}
+    std::priority_queue<GraphNode::edge, std::vector<GraphNode::edge>, GraphNode::edge> pq;
+    double costs = 0;
 
-bool operator>(const GraphNode::edge &a, const GraphNode::edge &b) {
-    return a.weight < b.weight;
-}
+    for(int j = 0; j < this->edges.size(); j++) {
+        pq.push(this->edges[j]);
+    }
 
-bool operator<(const GraphNode::edge &a, const GraphNode::edge &b) {
-    return a.weight > b.weight;
+    for(int i = 0; i < this->numberOfNodes; i++) {
+        this->nodes[i]->setComponent(i);
+    }
+
+    while(!pq.empty()) {
+        GraphNode::edge edge = pq.top();
+        pq.pop();
+
+        GraphNode* startNode = edge.startNode;
+        GraphNode* endNode = edge.endNode;
+
+        if(startNode->getComponent() != endNode->getComponent()) {
+            costs += edge.weight;
+
+            int endComp = endNode->getComponent();
+            for(int i = 0; i < this->nodes.size(); i++) {
+                if(this->nodes[i]->getComponent() == endComp) {
+                    this->nodes[i]->setComponent(startNode->getComponent());
+                }
+            }
+        }
+    }
+
+    return costs;
 }
 
