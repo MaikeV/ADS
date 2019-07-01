@@ -11,7 +11,7 @@
 
 class Graph {
 private:
-    int numberOfKnots;
+    int numberOfNodes;
     bool ger;
     bool gew;
     std::vector<GraphNode*> nodes;
@@ -23,8 +23,15 @@ private:
     bool testChildComponent(GraphNode* node);
 
 public:
-    Graph();
-    ~Graph();
+    Graph() {
+        this->ger = false;
+        this->gew = true;
+        this->numberOfNodes = 0;
+    }
+
+    ~Graph() {
+        nodes.~vector();
+    }
 
     bool init(std::string filepath);
     bool printAll();
@@ -33,8 +40,8 @@ public:
     double prim(int startKey);
     double kruskal();
 
-    int getNumberOfKnots() const {
-        return numberOfKnots;
+    int getNumberOfNodes() const {
+        return numberOfNodes;
     }
 };
 

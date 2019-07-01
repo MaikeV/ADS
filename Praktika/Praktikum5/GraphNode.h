@@ -10,13 +10,30 @@
 class GraphNode {
 public:
     struct edge {
-        GraphNode* endNode;
+        GraphNode *endNode;
         int weight;
+
+//        edge() {
+//            endNode = nullptr;
+//            weight = 0;
+//        }
+//
+//        edge(GraphNode *endNode, int weight) {
+//            this->endNode = endNode;
+//            this->weight = weight;
+//        }
+
+        bool operator()(const edge &l, const edge &r) const {
+            return l.weight > r.weight;
+        }
     };
+
+
 
     GraphNode(int key) {
         this->visited = false;
         this->key = key;
+        this->component = 0;
     }
 
     int getKey() const {
@@ -27,8 +44,8 @@ public:
         GraphNode::key = key;
     }
 
-    edge* getEdge(int value) {
-        return &this->edges.at(value);
+    edge getEdge(int value) {
+        return this->edges.at(value);
     }
 
     void addEdge(edge value) {

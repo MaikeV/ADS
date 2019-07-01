@@ -9,6 +9,7 @@ int main() {
 
     char choice = '1';
     char graphChoice = '1';
+    int start = 0;
     std::string path = "";
     Graph graph;
 
@@ -49,11 +50,37 @@ int main() {
 
                 break;
             case '2':
+                std::cout << "Bitte Startknoten eingeben: ?- ";
+                std::cin >> start;
 
+                if(graph.depthSearchRek(start)) {
+                    std::cout << "Es konnten alle Knoten besucht werden." << std::endl << std::endl;
+                } else {
+                    std::cout << "Es konnten nicht alle Knoten besucht werden." << std::endl << std::endl;
+                }
+
+                std::cout << std::endl;
+
+                break;
             case '3':
+                std::cout << "Bitte Startknoten eingeben: ?- ";
+                std::cin >> start;
 
+                if(graph.breadthSearchIter(start)) {
+                    std::cout << "Es konnten alle Knoten besucht werden." << std::endl << std::endl;
+                } else {
+                    std::cout << "Es konnten nicht alle Knoten besucht werden." << std::endl << std::endl;
+                }
+
+                std::cout << std::endl;
+
+                break;
             case '4':
+                std::cout << "Bitte Startknoten eingeben: ?- ";
+                std::cin >> start;
 
+                std::cout << "Prim: " << graph.prim(start) << std::endl << std::endl;
+                break;
             case '5':
 
             case '6':

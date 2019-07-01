@@ -5,6 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <queue>
+#include <unordered_map>
 #include "Graph.h"
 
 GraphNode *Graph::getNodeByKey(int key) {
@@ -12,27 +14,21 @@ GraphNode *Graph::getNodeByKey(int key) {
 }
 
 void Graph::setAllUnvisited() {
-
+    for(int i = 0; i < this->numberOfNodes; i++) {
+        this->nodes[i]->setVisited(false);
+    }
 }
 
 bool Graph::checkVisited() {
-    return false;
-}
-
-void Graph::startDepthSearchRek(GraphNode *node) {
-
+    for(int i = 0; i < this->numberOfNodes; i++) {
+        if(!this->nodes[i]->isVisited())
+            return false;
+    }
+    return true;
 }
 
 bool Graph::testChildComponent(GraphNode *node) {
     return false;
-}
-
-Graph::Graph() {
-
-}
-
-Graph::~Graph() {
-
 }
 
 bool Graph::init(std::string filepath) {
@@ -48,9 +44,9 @@ bool Graph::init(std::string filepath) {
         std::getline(file, line);
         std::istringstream iss(line);
 
-        iss >> this->numberOfKnots;
+        iss >> this->numberOfNodes;
 
-        for(int i = 0; i < this->numberOfKnots; i++) {
+        for(int i = 0; i < this->numberOfNodes; i++) {
             GraphNode* newNode = new GraphNode(i);
 
             this->nodes.push_back(newNode);
@@ -71,7 +67,7 @@ bool Graph::init(std::string filepath) {
 
             for (int i = 0; i < this->nodes.size(); i++) {
                 if(this->nodes[i]->getKey() == start) {
-                    for (int j = 0; j < this->numberOfKnots; j++) {
+                    for (int j = 0; j < this->numberOfNodes; j++) {
                         if (this->nodes[j]->getKey() == end) {
                             endNode = this->nodes[j];
                             break;
@@ -101,13 +97,13 @@ bool Graph::init(std::string filepath) {
 }
 
 bool Graph::printAll() {
-    for(int i = 0; i < this->numberOfKnots; i++) {
+    for(int i = 0; i < this->numberOfNodes; i++) {
         std::cout << i;
 
         for(int j = 0; j < this->nodes[i]->getNumberOfEdges(); j++) {
-            GraphNode::edge* edge = this->nodes[i]->getEdge(j);
+            GraphNode::edge edge = this->nodes[i]->getEdge(j);
 
-            std::cout << " -> " << edge->endNode->getKey() << " [" << edge->weight << "] ";
+            std::cout << " -> " << edge.endNode->getKey() << " [" << edge.weight << "] ";
         }
 
         std::cout << std::endl;
@@ -117,17 +113,142 @@ bool Graph::printAll() {
 }
 
 bool Graph::depthSearchRek(int startKey) {
-    return false;
+    this->setAllUnvisited();
+
+    GraphNode* node = nullptr;
+
+    for (int i = 0; i < this->numberOfNodes; i++)
+        if(this->nodes[i]->getKey() == startKey) {
+            node = this->nodes[i];
+            break;
+        }
+
+    if(!node) {
+        std::cout << "Key ist nicht in Graph enthalten" << std::endl << std::endl;
+        return false;
+    }
+
+    startDepthSearchRek(node);
+
+    return checkVisited();
+}
+
+void Graph::startDepthSearchRek(GraphNode *node) {
+    node->setVisited(true);
+    node->setComponent(node->getComponent() + 1);
+
+    for(int i = 0; i < node->getNumberOfEdges(); i++)
+        if (!node->getEdge(i).endNode->isVisited())
+            startDepthSearchRek(node->getEdge(i).endNode);
+
 }
 
 bool Graph::breadthSearchIter(int startKey) {
-    return false;
+    this->setAllUnvisited();
+
+    GraphNode *node = nullptr;
+    for (int i = 0; i < this->numberOfNodes; i++)
+        if (this->nodes[i]->getKey() == startKey) {
+            node = this->nodes[i];
+            break;
+        }
+
+    if (!node) {
+        std::cout << "Key ist nicht in Graph enthalten" << std::endl << std::endl;
+        return false;
+    }
+
+    std::queue<GraphNode *> queue;
+    queue.push(node);
+    GraphNode *v = nullptr;
+
+    while (!queue.empty() && !this->checkVisited()) {
+        v = queue.front();
+        queue.pop();
+
+        v->setVisited(true);
+
+        for (int i = 0; i < v->getNumberOfEdges(); i++) {
+            if (!v->getEdge(i).endNode->isVisited()) {
+                queue.push(v->getEdge(i).endNode);
+            }
+        }
+    }
+
+    return this->checkVisited();
 }
+//
+//void visitNode(GraphNode *node, std::priority_queue<GraphNode::edge, std::vector<GraphNode::edge>, GraphNode::edge> &pq) {
+//    node->setVisited(true);
+//
+//    for(int i = 0; i < node->getNumberOfEdges(); i++)
+//        if(!node->getEdge(i).endNode->isVisited())
+//            pq.push(node->getEdge(i));
+//}
 
 double Graph::prim(int startKey) {
-    return 0;
+    this->setAllUnvisited();
+
+    if(startKey > this->numberOfNodes) {
+        std::cout << "Key ist nicht in Graph enthalten" << std::endl << std::endl;
+        return 0;
+    }
+
+    GraphNode* node = this->nodes[startKey];
+    std::priority_queue<GraphNode::edge, std::vector<GraphNode::edge>, GraphNode::edge> pq;
+    double costs = 0;
+
+    for(int i = 0; i < node->getNumberOfEdges(); i++)
+        if(!node->getEdge(i).endNode->isVisited())
+            pq.push(node->getEdge(i));
+
+//    visitNode(node, pq);
+//
+    while(!pq.empty()) {
+        node->setVisited(true);
+
+        if(!pq.top().endNode->isVisited()) {
+            costs += pq.top().weight;
+            node = pq.top().endNode;
+            pq.pop();
+
+            for(int i = 0; i < node->getNumberOfEdges(); i++)
+                pq.push(node->getEdge(i));
+
+        } else {
+            pq.pop();
+        }
+
+//        GraphNode::edge edge = pq.top();
+//        pq.pop();
+//
+//        int v = node->getKey();
+//        int w = edge.endNode->getKey();
+//
+//        if(this->nodes[v]->isVisited() && this->nodes[w]->isVisited())
+//            continue;
+//
+//        costs += edge.weight;
+//
+//        if(!nodes[v]->isVisited())
+//            visitNode(this->nodes[v], pq);
+//
+//        if(!nodes[w]->isVisited())
+//            visitNode(this->nodes[w], pq);
+    }
+
+    return costs;
 }
 
 double Graph::kruskal() {
     return 0;
 }
+
+bool operator>(const GraphNode::edge &a, const GraphNode::edge &b) {
+    return a.weight < b.weight;
+}
+
+bool operator<(const GraphNode::edge &a, const GraphNode::edge &b) {
+    return a.weight > b.weight;
+}
+

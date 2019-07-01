@@ -40,7 +40,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	
 	SECTION("Tiefensuche mit erstem Graphen") {
 		
-		for (int i = 0; i < test1->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test1->getNumberOfNodes(); i++) {
 			bool test = test1->depthSearchRek(i);
 
 			REQUIRE(test == true);
@@ -49,7 +49,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Tiefensuche mit zweitem Graphen") {
 
-		for (int i = 0; i < test2->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test2->getNumberOfNodes(); i++) {
 			bool test = test2->depthSearchRek(i);
 
 			REQUIRE(test == true);
@@ -58,7 +58,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Tiefensuche mit drittem Graphen") {
 
-		for (int i = 0; i < test3->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test3->getNumberOfNodes(); i++) {
 			bool test = test3->depthSearchRek(i);
 
 			REQUIRE(test == false);
@@ -67,7 +67,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Breitensuche mit erstem Graphen") {
 
-		for (int i = 0; i < test1->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test1->getNumberOfNodes(); i++) {
 			bool test = test1->breadthSearchIter(i);
 
 			REQUIRE(test == true);
@@ -76,7 +76,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Breitensuche mit zweitem Graphen") {
 
-		for (int i = 0; i < test2->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test2->getNumberOfNodes(); i++) {
 			bool test = test2->breadthSearchIter(i);
 
 			REQUIRE(test == true);
@@ -85,7 +85,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Breitensuche mit drittem Graphen") {
 
-		for (int i = 0; i < test3->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test3->getNumberOfNodes(); i++) {
 			bool test = test3->breadthSearchIter(i);
 
 			REQUIRE(test == false);
@@ -93,7 +93,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	}
 
 	SECTION("Prim mit erstem Graph") {
-		for (int i = 0; i < test1->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test1->getNumberOfNodes(); i++) {
 			int value = test1->prim(i);
 
 			REQUIRE(value == 39);
@@ -101,7 +101,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	}
 
 	SECTION("Prim mit zweitem Graph") {
-		for (int i = 0; i < test2->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test2->getNumberOfNodes(); i++) {
 			int value = test2->prim(i);
 
 			REQUIRE(value == 150);
@@ -117,7 +117,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	}
 
 	SECTION("Kruskal mit erstem Graph") {
-		for (int i = 0; i < test1->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test1->getNumberOfNodes(); i++) {
 			int value = test1->kruskal();
 
 			REQUIRE(value == 39);
@@ -125,7 +125,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	}
 	
 	SECTION("Kruskal mit zweitem Graph") {
-		for (int i = 0; i < test2->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test2->getNumberOfNodes(); i++) {
 			int value = test2->kruskal();
 
 			REQUIRE(value == 150);
@@ -133,7 +133,7 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 	}
 
 	SECTION("Kruskal mit drittem Graph") {
-		for (int i = 0; i < test3->getNumberOfKnots(); i++) {
+		for (int i = 0; i < test3->getNumberOfNodes(); i++) {
 			int value = test3->kruskal();
 
 			REQUIRE(value == 184);
