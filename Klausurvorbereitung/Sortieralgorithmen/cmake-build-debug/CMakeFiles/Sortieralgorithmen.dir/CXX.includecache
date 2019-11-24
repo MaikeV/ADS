@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/Sortieralgorithmen/main.cpp
+iostream
+-
+vector
+-
+cmath
+-
+

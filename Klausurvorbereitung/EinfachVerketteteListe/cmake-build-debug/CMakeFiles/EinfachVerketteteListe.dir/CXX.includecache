@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/EinfachVerketteteListe/List.cpp
+iostream
+-
+List.h
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/EinfachVerketteteListe/List.h
+
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/EinfachVerketteteListe/List.h
+ListNode.h
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/EinfachVerketteteListe/ListNode.h
+
+/home/mauske/Studium/ADS/ADS/Klausurvorbereitung/EinfachVerketteteListe/ListNode.h
+

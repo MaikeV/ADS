@@ -12,12 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7c5d7cb-9daa-44bd-ade9-e2055d44cfa7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/List.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Aufgabe1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Aufgabe1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Aufgabe1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Aufgabe1.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Aufgabe2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Aufgabe2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Aufgabe3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Aufgabe3/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Klausurvorbereitung/EinfachVerketteteListe/List.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Klausurvorbereitung/EinfachVerketteteListe/List.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Klausurvorbereitung/EinfachVerketteteListe/ListNode.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Klausurvorbereitung/EinfachVerketteteListe/ListNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Aufgabe1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Aufgabe1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum2/Aufgabe1/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/Tree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/Tree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Praktikum3.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/Praktikum3.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum3/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum5/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum5/Graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Praktikum5/cmake-build-debug/Praktikum5" beforeDir="false" afterPath="$PROJECT_DIR$/../../Praktikum5/cmake-build-debug/Praktikum5" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,7 +67,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/List.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-1155">
               <caret line="363" column="19" selection-start-line="363" selection-start-column="19" selection-end-line="363" selection-end-column="19" />
             </state>
           </provider>
@@ -154,7 +168,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Aufgabe2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Praktikum3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
@@ -201,16 +215,17 @@
       <workItem from="1555924570572" duration="26230000" />
       <workItem from="1556005088001" duration="5333000" />
       <workItem from="1556172883302" duration="112000" />
+      <workItem from="1562436240354" duration="822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80214000" />
+    <option name="totallyTimeSpent" value="81036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15133038" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15299335" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -322,7 +337,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/List.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="-1155">
           <caret line="363" column="19" selection-start-line="363" selection-start-column="19" selection-end-line="363" selection-end-column="19" />
         </state>
       </provider>

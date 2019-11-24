@@ -21,6 +21,7 @@ int main() {
         "4) Prim" << std::endl <<
         "5) Kruskal" << std::endl <<
         "6) Print Graph" << std::endl <<
+        "7) Tiefensuche Iterativ" << std::endl <<
         "0 zum beenden" << std::endl << "?> ";
 
         std::cin >> choice;
@@ -86,6 +87,18 @@ int main() {
                 break;
             case '6':
                 graph.printAll();
+                break;
+            case '7':
+                std::cout << "Bitte Startknoten eingeben: ?- ";
+                std::cin >> start;
+
+                if(graph.depthSearchIter(start)) {
+                    std::cout << "Es konnten alle Knoten besucht werden." << std::endl << std::endl;
+                } else {
+                    std::cout << "Es konnten nicht alle Knoten besucht werden." << std::endl << std::endl;
+                }
+
+                std::cout << std::endl;
                 break;
             case '0':
                 break;

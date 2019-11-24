@@ -39,6 +39,7 @@ public:
     bool init(std::string filepath);
     bool printAll();
     bool depthSearchRek(int startKey);
+    bool depthSearchIter(int startKey);
     bool breadthSearchIter(int startKey);
     double prim(int startKey);
     double kruskal();

@@ -7,6 +7,7 @@
 #include <sstream>
 #include <queue>
 #include <unordered_map>
+#include <stack>
 #include "Graph.h"
 
 GraphNode *Graph::getNodeByKey(int key) {
@@ -118,13 +119,7 @@ bool Graph::printAll() {
 bool Graph::depthSearchRek(int startKey) {
     this->setAllUnvisited();
 
-    GraphNode* node = nullptr;
-
-    for (int i = 0; i < this->numberOfNodes; i++)
-        if(this->nodes[i]->getKey() == startKey) {
-            node = this->nodes[i];
-            break;
-        }
+    GraphNode* node = this->nodes[startKey];
 
     if(!node) {
         std::cout << "Key ist nicht in Graph enthalten" << std::endl << std::endl;
@@ -143,18 +138,33 @@ void Graph::startDepthSearchRek(GraphNode *node) {
     for(int i = 0; i < node->getNumberOfEdges(); i++)
         if (!node->getEdge(i).endNode->isVisited())
             startDepthSearchRek(node->getEdge(i).endNode);
+}
 
+bool Graph::depthSearchIter(int startKey) {
+    GraphNode *node = this->nodes[startKey];
+
+    std::stack<GraphNode *> stack;
+    stack.push(node);
+
+    while(!stack.empty()) {
+        GraphNode *v = stack.top();
+        stack.pop();
+        v->setVisited(true);
+
+        for(int i = 0; i < v->getNumberOfEdges(); i++) {
+            if(!v->getEdge(i).endNode->isVisited()) {
+                stack.push(v->getEdge(i).endNode);
+            }
+        }
+    }
+
+    return this->checkVisited();
 }
 
 bool Graph::breadthSearchIter(int startKey) {
     this->setAllUnvisited();
 
-    GraphNode *node = nullptr;
-    for (int i = 0; i < this->numberOfNodes; i++)
-        if (this->nodes[i]->getKey() == startKey) {
-            node = this->nodes[i];
-            break;
-        }
+    GraphNode *node = this->nodes[startKey];
 
     if (!node) {
         std::cout << "Key ist nicht in Graph enthalten" << std::endl << std::endl;
@@ -180,14 +190,6 @@ bool Graph::breadthSearchIter(int startKey) {
 
     return this->checkVisited();
 }
-//
-//void visitNode(GraphNode *node, std::priority_queue<GraphNode::edge, std::vector<GraphNode::edge>, GraphNode::edge> &pq) {
-//    node->setVisited(true);
-//
-//    for(int i = 0; i < node->getNumberOfEdges(); i++)
-//        if(!node->getEdge(i).endNode->isVisited())
-//            pq.push(node->getEdge(i));
-//}
 
 double Graph::prim(int startKey) {
     this->setAllUnvisited();
@@ -205,8 +207,6 @@ double Graph::prim(int startKey) {
         if(!node->getEdge(i).endNode->isVisited())
             pq.push(node->getEdge(i));
 
-//    visitNode(node, pq);
-
     while(!pq.empty()) {
         node->setVisited(true);
 
@@ -221,23 +221,6 @@ double Graph::prim(int startKey) {
         } else {
             pq.pop();
         }
-
-//        GraphNode::edge edge = pq.top();
-//        pq.pop();
-//
-//        int v = node->getKey();
-//        int w = edge.endNode->getKey();
-//
-//        if(this->nodes[v]->isVisited() && this->nodes[w]->isVisited())
-//            continue;
-//
-//        costs += edge.weight;
-//
-//        if(!nodes[v]->isVisited())
-//            visitNode(this->nodes[v], pq);
-//
-//        if(!nodes[w]->isVisited())
-//            visitNode(this->nodes[w], pq);
     }
 
     return costs;

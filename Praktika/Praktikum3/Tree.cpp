@@ -64,7 +64,7 @@ void Tree::addNode(std::string name, int age, double income, int plz){
             return;
         }
     } else if(newNode->getNodePosID() > this->anker->getNodePosID()) {
-    if(this->anker->getRight() != nullptr) {
+        if(this->anker->getRight() != nullptr) {
             addAtPos(newNode, this->anker->getRight());
         } else {
             this->anker->setRight(newNode);

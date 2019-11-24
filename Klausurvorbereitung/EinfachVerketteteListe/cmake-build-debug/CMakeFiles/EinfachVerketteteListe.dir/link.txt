@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/EinfachVerketteteListe.dir/main.cpp.o CMakeFiles/EinfachVerketteteListe.dir/List.cpp.o CMakeFiles/EinfachVerketteteListe.dir/ListNode.cpp.o  -o EinfachVerketteteListe 
